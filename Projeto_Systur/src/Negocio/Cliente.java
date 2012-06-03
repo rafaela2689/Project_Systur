@@ -1,4 +1,4 @@
-package Cadastros;
+package Negocio;
 
 /*
  * To change this template, choose Tools | Templates
