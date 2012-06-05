@@ -37,6 +37,7 @@ private String placa;
     public int getCapacidade() {
         return capacidade;
     }
+    //pohha nao vai funcionar nao?
 
     public boolean isStatus() {
         return status;
