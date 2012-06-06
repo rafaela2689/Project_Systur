@@ -12,7 +12,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -207,6 +210,15 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jTabbedPane2.addTab("Cadastro", jPanel3);
 
         jTabPesquisa.setModel(tmVeiculo);
+        jTabPesquisa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lsmVeiculo = jTabPesquisa.getSelectionModel();
+        lsmVeiculo.addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent e){
+                if(! e.getValueIsAdjusting()){
+                    linhaSelecionada(jTabPesquisa);
+                }
+            }
+        });
         jScrollPane1.setViewportView(jTabPesquisa);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -275,10 +287,28 @@ public class TelaVeiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFcapacidadeActionPerformed
 
     private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
-        // TODO add your handling code here:
-        
+        try {
+            // TODO add your handling code here:
+            excluir();
+            mostraPesquisa(veiculo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão excluir" + ex);
+        }
+         
     }//GEN-LAST:event_jBtExcluirActionPerformed
 
+    public void excluir() throws SQLException{
+        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ", 
+                "Confirmação", JOptionPane.YES_NO_OPTION); 
+        if(resp == JOptionPane.YES_NO_OPTION){
+            VeiculoDao dao = new VeiculoDao();
+            dao.exclui(veiculo.get(jTabPesquisa.getSelectedRow()));
+            mostraPesquisa(veiculo);
+            }         
+            
+        }
+    
+    
     private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
         // TODO add your handling code here:
         if (verificaDados()){
@@ -309,7 +339,13 @@ public class TelaVeiculo extends javax.swing.JFrame {
     }
     
     private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            alterar();
+            listarVeiculos();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão alterar" + ex);
+        }
         
     }//GEN-LAST:event_jBtAlterarActionPerformed
 
@@ -344,6 +380,18 @@ public class TelaVeiculo extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private void linhaSelecionada(JTable tabela){
+        if(jTabPesquisa.getSelectedRow() != -1){
+            habilitaDados();
+            jTFIdVeiculo.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getIdVeiculo()));
+            jTFPlaca.setText(veiculo.get(tabela.getSelectedRow()).getPlaca());
+            jTFcapacidade.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getCapacidade()));
+        }else{
+            jTFIdVeiculo.setText("");
+            jTFPlaca.setText("");
+            jTFcapacidade.setText("");
+        }
+    }
     
     public boolean verificaDados(){
         if(!jTFPlaca.getText().equals("")&&!jTFcapacidade.getText().equals("")){
@@ -437,6 +485,10 @@ public class TelaVeiculo extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void mostraPesquisa(List<Veiculo> veiculo) {
+        
+        while(tmVeiculo.getRowCount()>0){
+            tmVeiculo.removeRow(0);
+        }
         if(veiculo.size() == 0){
             JOptionPane.showMessageDialog(null, "Nenhum veículo cadastrado!");
         }
@@ -449,6 +501,20 @@ public class TelaVeiculo extends javax.swing.JFrame {
                 tmVeiculo.setValueAt(veiculo.get(i).getPlaca(), i, 1);
                 tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 2);
                 
+            }
+        }
+    }
+
+    private void alterar() throws SQLException {
+        if(jTabPesquisa.getSelectedRow() != -1){
+            if(verificaDados()){
+                Veiculo v1 = new Veiculo();
+                VeiculoDao dao = new VeiculoDao();
+                v1.setIdVeiculo(Integer.valueOf(jTFIdVeiculo.getText()));
+                v1.setPlaca(jTFPlaca.getText());
+                v1.setCapacidade(Integer.valueOf(jTFcapacidade.getText()));
+                dao.altera(v1);
+                JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
             }
         }
     }

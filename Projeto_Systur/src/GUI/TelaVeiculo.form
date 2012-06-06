@@ -343,6 +343,9 @@
                           <Connection code="tmVeiculo" type="code"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTabPesquisa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);&#xd;&#xa;lsmVeiculo = jTabPesquisa.getSelectionModel();&#xd;&#xa;lsmVeiculo.addListSelectionListener(new ListSelectionListener(){&#xd;&#xa;    public void valueChanged(ListSelectionEvent e){&#xd;&#xa;        if(! e.getValueIsAdjusting()){&#xd;&#xa;            linhaSelecionada(jTabPesquisa);&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
