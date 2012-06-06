@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +20,10 @@ import javax.swing.table.DefaultTableModel;
  * @author RAFAELA
  */
 public class TelaVeiculo extends javax.swing.JFrame {
-
+    
+    DefaultTableModel tmVeiculo = new DefaultTableModel(null, new String[]{"IdVeiculo", "Placa", "Capacidade"});
+    List<Veiculo> veiculo;
+    ListSelectionModel lsmVeiculo;
     /**
      * Creates new form TelaVeiculo
      */
@@ -26,6 +31,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
     
     public TelaVeiculo() {
         initComponents();
+        desabilitaDados();
         //listarVeiculos();
     }
 
@@ -46,6 +52,8 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jBtAlterar = new javax.swing.JButton();
         jBtExcluir = new javax.swing.JButton();
         jBtPesquisar = new javax.swing.JButton();
+        jBtNovo = new javax.swing.JButton();
+        jTFPesquisar = new javax.swing.JTextField();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLbIdVeiculo = new javax.swing.JLabel();
@@ -56,7 +64,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jTFcapacidade = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTabPesquisa = new javax.swing.JTable();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -90,6 +98,18 @@ public class TelaVeiculo extends javax.swing.JFrame {
         });
 
         jBtPesquisar.setText("Pesquisar");
+        jBtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtPesquisarActionPerformed(evt);
+            }
+        });
+
+        jBtNovo.setText("Novo");
+        jBtNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtNovoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,13 +117,19 @@ public class TelaVeiculo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jBtGravar)
-                .addGap(50, 50, 50)
-                .addComponent(jBtAlterar)
-                .addGap(50, 50, 50)
-                .addComponent(jBtExcluir)
-                .addGap(41, 41, 41)
-                .addComponent(jBtPesquisar)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTFPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBtPesquisar))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jBtGravar)
+                        .addGap(49, 49, 49)
+                        .addComponent(jBtAlterar)
+                        .addGap(51, 51, 51)
+                        .addComponent(jBtExcluir)
+                        .addGap(39, 39, 39)
+                        .addComponent(jBtNovo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -111,11 +137,15 @@ public class TelaVeiculo extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtPesquisar)
+                    .addComponent(jTFPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtGravar)
                     .addComponent(jBtAlterar)
                     .addComponent(jBtExcluir)
-                    .addComponent(jBtPesquisar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jBtNovo))
+                .addGap(22, 22, 22))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Veículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(51, 51, 51)));
@@ -176,18 +206,8 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Cadastro", jPanel3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jTabPesquisa.setModel(tmVeiculo);
+        jScrollPane1.setViewportView(jTabPesquisa);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -203,7 +223,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Consulta", jPanel4);
@@ -222,10 +242,10 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane2.getAccessibleContext().setAccessibleName("");
@@ -261,6 +281,20 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
     private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
         // TODO add your handling code here:
+        if (verificaDados()){
+            cadastro();
+            desabilitaDados();
+        }
+    }//GEN-LAST:event_jBtGravarActionPerformed
+
+    public void listarVeiculos() throws SQLException{
+        VeiculoDao dao = new VeiculoDao();
+        veiculo = dao.getLista("%" + jTFPesquisar.getText()+ "%");
+        mostraPesquisa(veiculo);
+    }
+    
+    
+    public void cadastro(){
         try {
         Veiculo v = new Veiculo();
         
@@ -272,17 +306,55 @@ public class TelaVeiculo extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TelaVeiculo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_jBtGravarActionPerformed
-
+    }
+    
     private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jBtAlterarActionPerformed
 
+    private void jBtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtNovoActionPerformed
+        // TODO add your handling code here:
+        habilitaDados();
+        jTFIdVeiculo.setText("");
+        jTFPlaca.setText("");
+        jTFcapacidade.setText("");
+    }//GEN-LAST:event_jBtNovoActionPerformed
+
+    private void jBtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtPesquisarActionPerformed
+        try {
+            // TODO add your handling code here:
+            listarVeiculos();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBtPesquisarActionPerformed
+
+    public void desabilitaDados(){
+        jTFIdVeiculo.setEditable(false);
+        jTFPlaca.setEditable(false);
+        jTFcapacidade.setEditable(false);
+    }
+    
+    public void habilitaDados(){
+        //jTFIdVeiculo.setEditable(false);
+        jTFPlaca.setEditable(true);
+        jTFcapacidade.setEditable(true);
+    }
     /**
      * @param args the command line arguments
      */
+    
+    public boolean verificaDados(){
+        if(!jTFPlaca.getText().equals("")&&!jTFcapacidade.getText().equals("")){
+            return true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Campos obrigatórios em branco!");
+            return false;
+        }
+    }
+    
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -344,6 +416,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
     private javax.swing.JButton jBtAlterar;
     private javax.swing.JButton jBtExcluir;
     private javax.swing.JButton jBtGravar;
+    private javax.swing.JButton jBtNovo;
     private javax.swing.JButton jBtPesquisar;
     private javax.swing.JLabel jLbCapacidade;
     private javax.swing.JLabel jLbIdVeiculo;
@@ -355,10 +428,28 @@ public class TelaVeiculo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFIdVeiculo;
+    private javax.swing.JTextField jTFPesquisar;
     private javax.swing.JTextField jTFPlaca;
     private javax.swing.JTextField jTFcapacidade;
+    private javax.swing.JTable jTabPesquisa;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    private void mostraPesquisa(List<Veiculo> veiculo) {
+        if(veiculo.size() == 0){
+            JOptionPane.showMessageDialog(null, "Nenhum veículo cadastrado!");
+        }
+        else{
+            String[] linha = new String[]{null, null, null};
+            for (int i = 0; i < veiculo.size(); i++) {
+                
+                tmVeiculo.addRow(linha);
+                tmVeiculo.setValueAt(veiculo.get(i).getIdVeiculo(), i, 0);
+                tmVeiculo.setValueAt(veiculo.get(i).getPlaca(), i, 1);
+                tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 2);
+                
+            }
+        }
+    }
 }
