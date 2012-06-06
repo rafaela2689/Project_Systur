@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 package GUI;
+import Dao.ClienteDAO;
+import Negocio.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,15 +75,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         jBtImprimir = new javax.swing.JButton();
         jBtSair = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jBPrimeiro = new javax.swing.JButton();
+        jBProximo = new javax.swing.JButton();
+        jBUltimo = new javax.swing.JButton();
+        jBAnterior = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTPObservacao = new javax.swing.JTextPane();
         jLObservacaoCliente = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jBLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,11 +187,21 @@ public class CadastroCliente extends javax.swing.JFrame {
         jBtGravar.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jBtGravar.setForeground(new java.awt.Color(0, 153, 0));
         jBtGravar.setText("Gravar");
+        jBtGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtGravarActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(153, 0, 0));
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLTelefone.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLTelefone.setText("Telefone");
@@ -259,27 +271,33 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel3.setText("Data Cadastro");
 
-        jButton2.setText("|<");
+        jBPrimeiro.setText("|<");
 
-        jButton3.setText(">");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBProximo.setText(">");
+        jBProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBProximoActionPerformed(evt);
             }
         });
 
-        jButton4.setText(">|");
+        jBUltimo.setText(">|");
 
-        jButton5.setText("<");
+        jBAnterior.setText("<");
 
         jScrollPane1.setViewportView(jTPObservacao);
 
         jLObservacaoCliente.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLObservacaoCliente.setText("Observações");
 
-        jLabel2.setText("jLabel2");
-
-        jLabel4.setText("Rafaela Beston");
+        jBLimpar.setBackground(new java.awt.Color(255, 51, 51));
+        jBLimpar.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jBLimpar.setForeground(new java.awt.Color(153, 0, 0));
+        jBLimpar.setText("Limpar");
+        jBLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,13 +326,13 @@ public class CadastroCliente extends javax.swing.JFrame {
                                             .addComponent(jLabel3)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(5, 5, 5)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jBPrimeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(9, 9, 9)
-                                        .addComponent(jButton5)
+                                        .addComponent(jBAnterior)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3)
+                                        .addComponent(jBProximo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4)
+                                        .addComponent(jBUltimo)
                                         .addGap(30, 30, 30)
                                         .addComponent(jBIncluir)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -329,8 +347,6 @@ public class CadastroCliente extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLObservacaoCliente)
                                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -344,10 +360,10 @@ public class CadastroCliente extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(156, 156, 156)
                                 .addComponent(jBtGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton1)
-                                .addGap(73, 73, 73)
-                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBLimpar)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap(20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -433,7 +449,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jAlterar, jBIncluir, jBtImprimir, jBtPesquisar, jBtSair});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton3, jButton4, jButton5});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jBAnterior, jBPrimeiro, jBProximo, jBUltimo});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,10 +460,10 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(jAlterar)
                     .addComponent(jBtPesquisar)
                     .addComponent(jBtImprimir)
-                    .addComponent(jButton5)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
+                    .addComponent(jBAnterior)
+                    .addComponent(jBPrimeiro)
+                    .addComponent(jBUltimo)
+                    .addComponent(jBProximo)
                     .addComponent(jBtSair, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -507,9 +523,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLDataNascimento)
                                     .addComponent(jLProfissao)
@@ -521,25 +535,20 @@ public class CadastroCliente extends javax.swing.JFrame {
                                     .addComponent(jTFIdentidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLCelular)
-                                            .addComponent(jLTelefone, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jBtGravar)
-                                            .addComponent(jButton1))
-                                        .addContainerGap())
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel4)
-                                        .addGap(32, 32, 32))))
+                                    .addComponent(jLCelular)
+                                    .addComponent(jLTelefone, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jBtGravar)
+                                    .addComponent(jButton1)
+                                    .addComponent(jBLimpar))
+                                .addContainerGap())
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(78, 78, 78)
                                 .addComponent(jLabel1)
@@ -562,7 +571,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jAlterar, jBIncluir, jBtImprimir, jBtPesquisar, jBtSair});
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButton3, jButton4, jButton5});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jBAnterior, jBPrimeiro, jBProximo, jBUltimo});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -607,9 +616,54 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTIDActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProximoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBProximoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimparActionPerformed
+        // TODO add your handling code here:
+   JTNome.setText("");
+   jTCPF.setText("");
+   jTFBairro.setText("");
+   jTFCadastradoPor.setText("");
+   jTFCelular.setText("");
+   jTFCep.setText("");
+   jTFCidade.setText("");       
+   jTFDataCadastro.setText("");       
+   jTFDataNascimento.setText("");   
+   jTFEmail.setText("");
+   jTFIdentidade.setText("");
+   jTFFaixadeDesconto.setText("");
+   jTFProfissao.setText("");
+   jTFRua.setText("");
+   jTFTelefone.setText("");
+   jTPObservacao.setText("");
+                  
+    }//GEN-LAST:event_jBLimparActionPerformed
+//cadastrando cliente
+    private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
+        // instanciando objeto cliente e adicionando valores aos atributos
+      Cliente cliente = new Cliente();
+      
+      cliente.setNome(JTNome.getText());
+      cliente.setCpf(jTCPF.getText());
+      
+      //validando dados
+      if((JTNome.getText().isEmpty())|| (jTCPF.getText().isEmpty())){
+          JOptionPane.showMessageDialog(null,"Os campos CPF e Nome Devem Ser preenchidos!");
+      }//fecha if
+      else {
+          //instanciando cliente na conexao 
+        ClienteDAO dao = new ClienteDAO();
+        dao.Inserir(cliente);
+        JOptionPane.showMessageDialog(null, "Cliente" + JTNome.getText()+"Inserido com sucesso");
+      }//fecha else
+    }//GEN-LAST:event_jBtGravarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -658,16 +712,17 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField JTNome;
     private javax.swing.JComboBox ListaCidade;
     private javax.swing.JButton jAlterar;
+    private javax.swing.JButton jBAnterior;
     private javax.swing.JButton jBIncluir;
+    private javax.swing.JButton jBLimpar;
+    private javax.swing.JButton jBPrimeiro;
+    private javax.swing.JButton jBProximo;
+    private javax.swing.JButton jBUltimo;
     private javax.swing.JButton jBtGravar;
     private javax.swing.JButton jBtImprimir;
     private javax.swing.JButton jBtPesquisar;
     private javax.swing.JButton jBtSair;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLBairro;
     private javax.swing.JLabel jLCelular;
     private javax.swing.JLabel jLCep;
@@ -685,9 +740,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLSexo;
     private javax.swing.JLabel jLTelefone;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelCastradoPor;
     private javax.swing.JLabel jLcodigoCliente;
     private javax.swing.JRadioButton jRadioButtonMasculino;

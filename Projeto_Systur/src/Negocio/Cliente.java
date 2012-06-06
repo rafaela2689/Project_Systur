@@ -12,7 +12,7 @@ package Negocio;
 public class Cliente {
     
     private String nome;
-    private String CPF;
+    private String cpf;
 
     /**
      * @return the nome
@@ -31,15 +31,15 @@ public class Cliente {
     /**
      * @return the CPF
      */
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
     /**
      * @param CPF the CPF to set
      */
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String CPF) {
+        this.cpf = CPF;
     }
     
     

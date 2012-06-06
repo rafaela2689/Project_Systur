@@ -49,13 +49,13 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      <Component id="jButton2" linkSize="8" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="jBPrimeiro" linkSize="8" min="-2" pref="45" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                      <Component id="jButton5" linkSize="8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBAnterior" linkSize="8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton3" linkSize="8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBProximo" linkSize="8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton4" linkSize="8" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBUltimo" linkSize="8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jBIncluir" linkSize="6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -73,8 +73,6 @@
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLObservacaoCliente" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jScrollPane1" min="-2" pref="226" max="-2" attributes="0"/>
@@ -95,10 +93,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                               <Component id="jBtGravar" linkSize="1" min="-2" pref="77" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton1" linkSize="1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jBLimpar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -222,10 +220,10 @@
                   <Component id="jAlterar" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtPesquisar" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtImprimir" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton5" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton4" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBAnterior" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBPrimeiro" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBUltimo" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBProximo" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtSair" linkSize="7" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -304,9 +302,7 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace pref="31" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLProfissao" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -320,31 +316,23 @@
                                   <Component id="jTFProfissao" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTFDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLCelular" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLTelefone" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jTFCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTFTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jBtGravar" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLCelular" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLTelefone" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTFCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jBtGravar" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jBLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -601,6 +589,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Gravar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtGravarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -615,6 +606,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLTelefone">
       <Properties>
@@ -760,25 +754,25 @@
         <Property name="text" type="java.lang.String" value="Data Cadastro"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jBPrimeiro">
       <Properties>
         <Property name="text" type="java.lang.String" value="|&lt;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jBProximo">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBProximoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="jBUltimo">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;|"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jBAnterior">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;"/>
       </Properties>
@@ -802,15 +796,22 @@
         <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JButton" name="jBLimpar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Georgia" size="12" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rafaela Beston"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLimparActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
