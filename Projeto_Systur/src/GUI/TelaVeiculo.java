@@ -6,8 +6,11 @@ package GUI;
 
 import DAO.VeiculoDao;
 import Negocio.Veiculo;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,16 +22,10 @@ public class TelaVeiculo extends javax.swing.JFrame {
     /**
      * Creates new form TelaVeiculo
      */
-    Veiculo veiculo = new Veiculo();
-    
-    VeiculoDao daoV = new VeiculoDao();
-    private DefaultTableModel tabelaModeloVeiculo;
-    List<Veiculo> arlTabela = new ArrayList<>();
     
     
     public TelaVeiculo() {
         initComponents();
-        TelaVeiculo.this.dispose();
         //listarVeiculos();
     }
 
@@ -259,18 +256,28 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
     private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
         // TODO add your handling code here:
-        excluirVeiculo();
+        
     }//GEN-LAST:event_jBtExcluirActionPerformed
 
     private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
         // TODO add your handling code here:
-        gravarVeiculo();
+        try {
+        Veiculo v = new Veiculo();
+        
+        v.setPlaca(jTFPlaca.getText());
+        v.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
+        
+            VeiculoDao vd = new VeiculoDao();
+            vd.adiciona(v);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jBtGravarActionPerformed
 
     private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
         // TODO add your handling code here:
-        alterarVeiculo();
+        
     }//GEN-LAST:event_jBtAlterarActionPerformed
 
     /**
@@ -316,7 +323,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
             }
         });
     }
-    private void gravarVeiculo() {
+    /*private void gravarVeiculo() {
             veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
             veiculo.setPlaca(jTFPlaca.getText());
             veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
@@ -332,7 +339,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
     private void excluirVeiculo() {
             veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
             daoV.excluir(veiculo);
-}
+}*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAlterar;
     private javax.swing.JButton jBtExcluir;
