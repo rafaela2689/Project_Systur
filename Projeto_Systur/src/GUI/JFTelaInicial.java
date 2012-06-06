@@ -38,6 +38,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SYSTUR - Sistema de Agência de Turismo");
 
         jMenuCadastro.setText("Cadastros");
 
@@ -51,6 +52,11 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jMenuCadastro.add(jMenuItemFuncionario);
 
         jMenuItemVeiculo.setText("Veículos");
+        jMenuItemVeiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItemVeiculoMouseClicked(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemVeiculo);
 
         jMenuBar1.add(jMenuCadastro);
@@ -82,6 +88,11 @@ public class JFTelaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemVeiculoMouseClicked
+        // TODO add your handling code here:
+        new TelaVeiculo().setVisible(true);
+    }//GEN-LAST:event_jMenuItemVeiculoMouseClicked
 
     /**
      * @param args the command line arguments

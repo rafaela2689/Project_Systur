@@ -438,6 +438,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 new TelaVeiculo().setVisible(true);
             }
