@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package GUI;
-import Dao.ClienteDAO;
+import BancoDados.ClienteDAO;
 import Negocio.Cliente;
 import javax.swing.JOptionPane;
 

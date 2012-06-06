@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package BancoDados;
 import Negocio.Cliente;
 import java.sql.*;
 import java.util.*;
@@ -22,10 +22,7 @@ public class ClienteDAO {
  
     }
 
-    public ClienteDAO() {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
+    
 
     /**
      * @return the con
