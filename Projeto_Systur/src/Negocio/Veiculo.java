@@ -1,67 +1,83 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Negocio;
-
 /**
  *
  * @author RAFAELA
  */
 public class Veiculo {
-    private int idVeiculo;
-    private String placa;
+
+private String placa;
+
+    private String cor;
+    private String chassi;
+    private String modelo;
+    private String marca;
     private int capacidade;
+    private boolean status;//será usado falso caso o veiculo nao esteja mais 
+    private String observacao;
 
-    public Veiculo(int idVeiculo, String placa, int capacidade) {
-        this.idVeiculo = idVeiculo;
-        this.placa = placa;
-        this.capacidade = capacidade;
-    }
-
-    public Veiculo() {
-    }
-
-    /**
-     * @return the idVeiculo
-     */
-    public int getIdVeiculo() {
-        return idVeiculo;
-    }
-
-    /**
-     * @param idVeiculo the idVeiculo to set
-     */
-    public void setIdVeiculo(int idVeiculo) {
-        this.idVeiculo = idVeiculo;
-    }
-
-    /**
-     * @return the placa
-     */
     public String getPlaca() {
         return placa;
     }
 
-    /**
-     * @param placa the placa to set
-     */
+    public String getCor() {
+        return cor;
+    }
+
+    public String getChassi() {
+        return chassi;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+    //pohha nao vai funcionar nao?
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
     public void setPlaca(String placa) {
         this.placa = placa;
     }
 
-    /**
-     * @return the capacidade
-     */
-    public int getCapacidade() {
-        return capacidade;
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 
-    /**
-     * @param capacidade the capacidade to set
-     */
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
     
     

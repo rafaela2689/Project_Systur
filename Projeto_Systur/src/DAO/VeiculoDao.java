@@ -50,7 +50,7 @@ public class VeiculoDao {
 
         while (rs.next()) {
             Veiculo v1 = new Veiculo();
-            v1.setIdVeiculo(rs.getInt("IdVeiculo"));
+            //v1.setIdVeiculo(rs.getInt("IdVeiculo"));
             v1.setPlaca(rs.getString("placa"));
             v1.setCapacidade(rs.getInt("capacidade"));
 
@@ -68,7 +68,7 @@ public class VeiculoDao {
 
         st.setString(1, v.getPlaca());
         st.setInt(2, v.getCapacidade());
-        st.setInt(3, v.getIdVeiculo());
+        //st.setInt(3, v.getIdVeiculo());
 
         //executa o código sql
         st.execute();
@@ -79,7 +79,7 @@ public class VeiculoDao {
         String sql = "delete from veiculo where idVeiculo=?";
         PreparedStatement st = conexao.prepareStatement(sql);
 
-        st.setInt(1, v.getIdVeiculo());
+        //st.setInt(1, v.getIdVeiculo());
         st.execute();
         st.close();
     }

@@ -91,7 +91,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
 
     private void jMenuItemVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemVeiculoMouseClicked
         // TODO add your handling code here:
-        new TelaVeiculo().setVisible(true);
+       new TelaVeiculo().setVisible(true);
     }//GEN-LAST:event_jMenuItemVeiculoMouseClicked
 
     /**
