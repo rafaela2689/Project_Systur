@@ -5,14 +5,15 @@ package Negocio;
  */
 public class Veiculo {
 
-private String placa;
+private String placa;//chave 
 
     private String cor;
     private String chassi;
     private String modelo;
     private String marca;
     private int capacidade;
-    private boolean status;//será usado falso caso o veiculo nao esteja mais 
+    private boolean status;//será usado falso caso o veiculo nao esteja mais
+    private String tipo;
     private String observacao;
 
     public String getPlaca() {
@@ -78,6 +79,20 @@ private String placa;
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     

@@ -26,13 +26,21 @@ public class VeiculoDao {
     }
 
     public void adiciona(Veiculo veiculo) throws SQLException {
-        String sql = "insert into veiculo( placa, capacidade)" + "values(?,?)";
+        String sql = "insert into veiculo( placa,cor, chassi, modelo, marca, capacidade, status,tipo, observaçao)" + "values(?,?,?,?,?,?,?,?)";
 
         PreparedStatement st = conexao.prepareStatement(sql);
         //seta os valores
         //st.setInt(1, veiculo.getIdVeiculo());
         st.setString(1, veiculo.getPlaca());
-        st.setInt(2, veiculo.getCapacidade());
+        st.setString(2, veiculo.getCor());
+        st.setString(3, veiculo.getChassi());
+        st.setString(4, veiculo.getModelo());
+        st.setString(5, veiculo.getMarca());
+        st.setInt(6, veiculo.getCapacidade());
+        st.setBoolean(7, veiculo.isStatus());
+        st.setString(8, veiculo.getTipo());
+        st.setString(9, veiculo.getObservacao());
+        
 
         //executa o código sql
         st.execute();
@@ -52,7 +60,13 @@ public class VeiculoDao {
             Veiculo v1 = new Veiculo();
             //v1.setIdVeiculo(rs.getInt("IdVeiculo"));
             v1.setPlaca(rs.getString("placa"));
+            v1.setChassi(rs.getString("chassi"));
+            v1.setCor(rs.getString("cor"));
+            v1.setModelo(rs.getString("modelo"));
+            v1.setMarca(rs.getString("marca"));
             v1.setCapacidade(rs.getInt("capacidade"));
+            v1.setStatus(rs.getBoolean("status"));
+            v1.setObservacao(rs.getString("observaçao"));
 
             minhaLista.add(v1);
 
@@ -63,11 +77,17 @@ public class VeiculoDao {
     }
 
     public void altera(Veiculo v) throws SQLException {
-        String sql = "update veiculo set placa=?, capacidade=? where idVeiculo=?";
+        String sql = "update veiculo set cor=?, chassi=?, modelo=?, marca=?, capacidade=?, status=?, observacao=? where placa=?";
         PreparedStatement st = conexao.prepareStatement(sql);
 
-        st.setString(1, v.getPlaca());
-        st.setInt(2, v.getCapacidade());
+        //st.setString(1, v.getPlaca());
+        st.setString(1, v.getCor());
+        st.setString(2, v.getChassi());
+        st.setString(3, v.getModelo());
+        st.setString(4, v.getMarca());
+        st.setInt(5, v.getCapacidade());
+        st.setBoolean(6, v.isStatus());
+        st.setString(7, v.getObservacao());
         //st.setInt(3, v.getIdVeiculo());
 
         //executa o código sql
@@ -76,7 +96,7 @@ public class VeiculoDao {
     }
 
     public void exclui(Veiculo v) throws SQLException {
-        String sql = "delete from veiculo where idVeiculo=?";
+        String sql = "delete from veiculo where placa=?";
         PreparedStatement st = conexao.prepareStatement(sql);
 
         //st.setInt(1, v.getIdVeiculo());
