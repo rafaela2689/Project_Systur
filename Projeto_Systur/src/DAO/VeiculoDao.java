@@ -26,7 +26,7 @@ public class VeiculoDao {
     }
 
     public void adiciona(Veiculo veiculo) throws SQLException {
-        String sql = "insert into veiculo( placa,cor, chassi, modelo, marca, capacidade, status,tipo, observaçao)" + "values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into veiculo( placa,cor, chassi, modelo, marca, capacidade, status, tipo, observaçao)" + "values(?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement st = conexao.prepareStatement(sql);
         //seta os valores
@@ -37,7 +37,7 @@ public class VeiculoDao {
         st.setString(4, veiculo.getModelo());
         st.setString(5, veiculo.getMarca());
         st.setInt(6, veiculo.getCapacidade());
-        st.setBoolean(7, veiculo.isStatus());
+        st.setString(7, veiculo.getStatus());
         st.setString(8, veiculo.getTipo());
         st.setString(9, veiculo.getObservacao());
         
@@ -65,7 +65,8 @@ public class VeiculoDao {
             v1.setModelo(rs.getString("modelo"));
             v1.setMarca(rs.getString("marca"));
             v1.setCapacidade(rs.getInt("capacidade"));
-            v1.setStatus(rs.getBoolean("status"));
+            v1.setStatus(rs.getString("status"));
+            v1.setTipo(rs.getString("tipo"));
             v1.setObservacao(rs.getString("observaçao"));
 
             minhaLista.add(v1);
@@ -77,7 +78,7 @@ public class VeiculoDao {
     }
 
     public void altera(Veiculo v) throws SQLException {
-        String sql = "update veiculo set cor=?, chassi=?, modelo=?, marca=?, capacidade=?, status=?, observacao=? where placa=?";
+        String sql = "update veiculo set cor=?, chassi=?, modelo=?, marca=?, capacidade=?, status=?, tipo=?, observacao=? where placa=?";
         PreparedStatement st = conexao.prepareStatement(sql);
 
         //st.setString(1, v.getPlaca());
@@ -86,8 +87,9 @@ public class VeiculoDao {
         st.setString(3, v.getModelo());
         st.setString(4, v.getMarca());
         st.setInt(5, v.getCapacidade());
-        st.setBoolean(6, v.isStatus());
-        st.setString(7, v.getObservacao());
+        st.setString(6, v.getStatus());
+        st.setString(7, v.getTipo());
+        st.setString(8, v.getObservacao());
         //st.setInt(3, v.getIdVeiculo());
 
         //executa o código sql

@@ -5,14 +5,14 @@ package Negocio;
  */
 public class Veiculo {
 
-private String placa;//chave 
+private String placa;//chave primaria
 
     private String cor;
     private String chassi;
     private String modelo;
     private String marca;
     private int capacidade;
-    private boolean status;//será usado falso caso o veiculo nao esteja mais
+    private String status;//será usado falso caso o veiculo nao esteja mais
     private String tipo;
     private String observacao;
 
@@ -41,7 +41,7 @@ private String placa;//chave
     }
     //pohha nao vai funcionar nao?
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -73,7 +73,7 @@ private String placa;//chave
         this.capacidade = capacidade;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

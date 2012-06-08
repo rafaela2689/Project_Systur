@@ -23,15 +23,16 @@ import javax.swing.table.DefaultTableModel;
  * @author RAFAELA
  */
 public class TelaVeiculo extends javax.swing.JFrame {
-    
-    DefaultTableModel tmVeiculo = new DefaultTableModel(null, new String[]{"IdVeiculo", "Placa", "Capacidade"});
+
+    //define o modelo da tabela, suas colunas
+    DefaultTableModel tmVeiculo = new DefaultTableModel(null, new String[]{"Placa", "Cor", "Chassi",
+                "Modelo", "Marca", "Capacidade", "Status", "Tipo", "Observação"});
     List<Veiculo> veiculo;
     ListSelectionModel lsmVeiculo;
+
     /**
      * Creates new form TelaVeiculo
      */
-    
-    
     public TelaVeiculo() {
         initComponents();
         desabilitaDados();
@@ -57,12 +58,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jBtPesquisar = new javax.swing.JButton();
         jBtNovo = new javax.swing.JButton();
         jTFPesquisar = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTabPesquisa = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jTFIdVeiculo = new javax.swing.JTextField();
-        jLbIdVeiculo = new javax.swing.JLabel();
         jTFcapacidade = new javax.swing.JTextField();
         jLbCapacidade = new javax.swing.JLabel();
         jTFPlaca = new javax.swing.JTextField();
@@ -79,6 +75,12 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jLbObs = new javax.swing.JLabel();
         jTFStatus = new javax.swing.JTextField();
         jTFObs = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTFTipo = new javax.swing.JTextField();
+        jComboBoxStatus = new javax.swing.JComboBox();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTabPesquisa = new javax.swing.JTable();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -162,36 +164,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
                 .addGap(230, 230, 230))
         );
 
-        jTabPesquisa.setModel(tmVeiculo);
-        jTabPesquisa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        lsmVeiculo = jTabPesquisa.getSelectionModel();
-        lsmVeiculo.addListSelectionListener(new ListSelectionListener(){
-            public void valueChanged(ListSelectionEvent e){
-                if(! e.getValueIsAdjusting()){
-                    linhaSelecionada(jTabPesquisa);
-                }
-            }
-        });
-        jScrollPane1.setViewportView(jTabPesquisa);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
-        jLbIdVeiculo.setText("IdVeículo:");
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
 
         jTFcapacidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,94 +188,132 @@ public class TelaVeiculo extends javax.swing.JFrame {
 
         jLbObs.setText("Observação:");
 
+        jLabel1.setText("Tipo:");
+
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo" }));
+        jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxStatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLbIdVeiculo)
-                        .addGap(30, 30, 30)
-                        .addComponent(jTFIdVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLbCapacidade)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFcapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLbCor)
+                    .addComponent(jLbPlaca)
+                    .addComponent(jLbCapacidade)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLbModelo)
+                        .addComponent(jLbChassi))
+                    .addComponent(jLbMarca)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLbPlaca)
-                            .addGap(38, 38, 38)
-                            .addComponent(jTFPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLbChassi)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLbModelo)
-                                    .addComponent(jLbCor)
-                                    .addComponent(jLbMarca)))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(59, 59, 59)
-                                    .addComponent(jTFChassi, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTFCor, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                        .addComponent(jTFModelo)
-                                        .addComponent(jTFMarca)))))))
-                .addGap(114, 114, 114)
+                            .addGap(10, 10, 10)
+                            .addComponent(jLabel1))
+                        .addComponent(jLbStatus)))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLbStatus)
-                    .addComponent(jLbObs))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFObs, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(jTFcapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFCor, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFChassi, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)
+                        .addComponent(jLbObs)
+                        .addGap(30, 30, 30)
+                        .addComponent(jTFObs, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(349, Short.MAX_VALUE))
         );
+
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTFChassi, jTFCor, jTFMarca, jTFModelo, jTFPlaca, jTFcapacidade});
+
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFIdVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLbIdVeiculo)
-                    .addComponent(jLbStatus)
-                    .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLbObs)
-                    .addComponent(jTFObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFcapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLbCapacidade))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbPlaca)
                     .addComponent(jTFPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLbPlaca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLbChassi)
-                    .addComponent(jTFChassi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLbObs))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLbCor)
                     .addComponent(jTFCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLbModelo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLbMarca))
+                    .addComponent(jLbChassi)
+                    .addComponent(jTFChassi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbModelo)
+                    .addComponent(jTFModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbMarca)
+                    .addComponent(jTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbCapacidade)
+                    .addComponent(jTFcapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbStatus)
+                    .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTFTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jTFObs, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLbIdVeiculo.getAccessibleContext().setAccessibleName("IdVeículo");
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.black));
+
+        jTabPesquisa.setModel(tmVeiculo);
+        jTabPesquisa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lsmVeiculo = jTabPesquisa.getSelectionModel();
+        lsmVeiculo.addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent e){
+                if(! e.getValueIsAdjusting()){
+                    linhaSelecionada(jTabPesquisa);
+                }
+            }
+        });
+        jScrollPane1.setViewportView(jTabPesquisa);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(647, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -314,7 +325,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 258, Short.MAX_VALUE))
+                        .addGap(0, 272, Short.MAX_VALUE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -324,9 +335,9 @@ public class TelaVeiculo extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -361,50 +372,58 @@ public class TelaVeiculo extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no botão excluir" + ex);
         }
-         
+
     }//GEN-LAST:event_jBtExcluirActionPerformed
 
-    public void excluir() throws SQLException{
-        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ", 
-                "Confirmação", JOptionPane.YES_NO_OPTION); 
-        if(resp == JOptionPane.YES_NO_OPTION){
+    //exclui os dados que foram selecionados na tabela de pesquisa
+    public void excluir() throws SQLException {
+        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ",
+                "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (resp == JOptionPane.YES_NO_OPTION) {
             VeiculoDao dao = new VeiculoDao();
             dao.exclui(veiculo.get(jTabPesquisa.getSelectedRow()));
             mostraPesquisa(veiculo);
-            }         
-            
         }
-    
-    
+
+    }
+
     private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
         // TODO add your handling code here:
-        if (verificaDados()){
+        if (verificaDados()) {
             cadastro();
             desabilitaDados();
         }
     }//GEN-LAST:event_jBtGravarActionPerformed
 
-    public void listarVeiculos() throws SQLException{
+    //realiza uma pesquisa
+    public void listarVeiculos() throws SQLException {
         VeiculoDao dao = new VeiculoDao();
-        veiculo = dao.getLista("%" + jTFPesquisar.getText()+ "%");
+        veiculo = dao.getLista("%" + jTFPesquisar.getText() + "%");
         mostraPesquisa(veiculo);
     }
-    
-    
-    public void cadastro(){
+
+    //cadastra novo veiculo
+    public void cadastro() {
         try {
-        Veiculo v = new Veiculo();
-        
-        v.setPlaca(jTFPlaca.getText());
-        v.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
-        
+            Veiculo v = new Veiculo();
+
+            v.setPlaca(jTFPlaca.getText());
+            v.setCor(jTFCor.getText());
+            v.setChassi(jTFChassi.getText());
+            v.setModelo(jTFModelo.getText());
+            v.setMarca(jTFMarca.getText());
+            v.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
+            v.setStatus(jTFStatus.getText());
+            v.setTipo(jTFTipo.getText());
+            v.setObservacao(jTFObs.getText());
+
             VeiculoDao vd = new VeiculoDao();
             vd.adiciona(v);
         } catch (SQLException ex) {
-            Logger.getLogger(TelaVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro no botão cadastrar" + ex);
         }
     }
-    
+
     private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
         try {
             // TODO add your handling code here:
@@ -413,15 +432,22 @@ public class TelaVeiculo extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no botão alterar" + ex);
         }
-        
+
     }//GEN-LAST:event_jBtAlterarActionPerformed
 
     private void jBtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtNovoActionPerformed
         // TODO add your handling code here:
         habilitaDados();
-        jTFIdVeiculo.setText("");
+        //jTFIdVeiculo.setText("");
         jTFPlaca.setText("");
+        jTFCor.setText("");
+        jTFChassi.setText("");
+        jTFModelo.setText("");
+        jTFMarca.setText("");
         jTFcapacidade.setText("");
+        jTFStatus.setText("");
+        jTFTipo.setText("");
+        jTFObs.setText("");
     }//GEN-LAST:event_jBtNovoActionPerformed
 
     private void jBtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtPesquisarActionPerformed
@@ -429,47 +455,89 @@ public class TelaVeiculo extends javax.swing.JFrame {
             // TODO add your handling code here:
             listarVeiculos();
         } catch (SQLException ex) {
-            Logger.getLogger(TelaVeiculo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro no botão pesquisar" + ex);
         }
     }//GEN-LAST:event_jBtPesquisarActionPerformed
 
-    public void desabilitaDados(){
-        jTFIdVeiculo.setEditable(false);
+    private void jComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusActionPerformed
+        // TODO add your handling code here:
+        String a = (String)jComboBoxStatus.getSelectedItem();
+        //jLabel1.setText(a);
+
+    }//GEN-LAST:event_jComboBoxStatusActionPerformed
+
+    //desabilita a ediçao dos dados
+    public void desabilitaDados() {
+        //jTFIdVeiculo.setEditable(false);
         jTFPlaca.setEditable(false);
+        jTFCor.setEditable(false);
+        jTFChassi.setEditable(false);
+        jTFModelo.setEditable(false);
+        jTFMarca.setEditable(false);
         jTFcapacidade.setEditable(false);
+        jTFStatus.setEditable(false);
+        jTFTipo.setEditable(false);
+        jTFObs.setEditable(false);
     }
-    
-    public void habilitaDados(){
+    //permite a ediçao dos dados
+
+    public void habilitaDados() {
         //jTFIdVeiculo.setEditable(false);
         jTFPlaca.setEditable(true);
+        jTFCor.setEditable(true);
+        jTFChassi.setEditable(true);
+        jTFModelo.setEditable(true);
+        jTFMarca.setEditable(true);
         jTFcapacidade.setEditable(true);
+        jTFStatus.setEditable(true);
+        jTFTipo.setEditable(true);
+        jTFObs.setEditable(true);
     }
+
     /**
      * @param args the command line arguments
      */
-    private void linhaSelecionada(JTable tabela){
-        if(jTabPesquisa.getSelectedRow() != -1){
+    //seleciona uma linha na tabela para alterar ou excluir dados 
+    private void linhaSelecionada(JTable tabela) {
+        if (jTabPesquisa.getSelectedRow() != -1) {
             habilitaDados();
-            jTFIdVeiculo.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getIdVeiculo()));
+            //jTFIdVeiculo.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getIdVeiculo()));
             jTFPlaca.setText(veiculo.get(tabela.getSelectedRow()).getPlaca());
+            jTFCor.setText(veiculo.get(tabela.getSelectedRow()).getCor());
+            jTFChassi.setText(veiculo.get(tabela.getSelectedRow()).getChassi());
+            jTFModelo.setText(veiculo.get(tabela.getSelectedRow()).getModelo());
+            jTFMarca.setText(veiculo.get(tabela.getSelectedRow()).getMarca());
             jTFcapacidade.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getCapacidade()));
-        }else{
-            jTFIdVeiculo.setText("");
+            jTFStatus.setText(veiculo.get(tabela.getSelectedRow()).getStatus());
+            jTFTipo.setText(veiculo.get(tabela.getSelectedRow()).getTipo());
+            jTFObs.setText(veiculo.get(tabela.getSelectedRow()).getObservacao());
+        } else {
+
+            //jTFIdVeiculo.setText("");
             jTFPlaca.setText("");
+            jTFCor.setText("");
+            jTFChassi.setText("");
+            jTFModelo.setText("");
+            jTFMarca.setText("");
             jTFcapacidade.setText("");
+            jTFStatus.setText("");
+            jTFTipo.setText("");
+            jTFObs.setText("");
         }
     }
-    
-    public boolean verificaDados(){
-        if(!jTFPlaca.getText().equals("")&&!jTFcapacidade.getText().equals("")){
+
+    //verifica se foi deixado algum campo obrigatório em branco
+    public boolean verificaDados() {
+        if ((!jTFPlaca.getText().equals("")) && (!jTFCor.getText().equals(""))
+                && (!jTFChassi.getText().equals("")) && (!jTFModelo.getText().equals("")) && (!jTFMarca.getText().equals(""))
+                && (!jTFcapacidade.getText().equals("")) && (!jTFStatus.getText().equals("")) && (!jTFTipo.getText().equals(""))) {
             return true;
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Campos obrigatórios em branco!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios em branco!");
             return false;
         }
     }
-    
+
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -501,8 +569,8 @@ public class TelaVeiculo extends javax.swing.JFrame {
         /*
          * Create and display the form
          */
-        
-        
+
+
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             @Override
@@ -511,33 +579,31 @@ public class TelaVeiculo extends javax.swing.JFrame {
             }
         });
     }
-    /*private void gravarVeiculo() {
-            veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
-            veiculo.setPlaca(jTFPlaca.getText());
-            veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
-            daoV.inserir(veiculo);
+    /*
+     * private void gravarVeiculo() { veiculo.setIdVeiculo(new
+     * Integer(jTFIdVeiculo.getText())); veiculo.setPlaca(jTFPlaca.getText());
+     * veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
+     * daoV.inserir(veiculo); }
+     *
+     * private void alterarVeiculo() { veiculo.setIdVeiculo(new
+     * Integer(jTFIdVeiculo.getText())); veiculo.setPlaca(jTFPlaca.getText());
+     * veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
+     * daoV.alterar(veiculo); } private void excluirVeiculo() {
+     * veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
+     * daoV.excluir(veiculo);
 }
-
-    private void alterarVeiculo() {
-            veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
-            veiculo.setPlaca(jTFPlaca.getText());
-            veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
-            daoV.alterar(veiculo);
-}
-    private void excluirVeiculo() {
-            veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
-            daoV.excluir(veiculo);
-}*/
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAlterar;
     private javax.swing.JButton jBtExcluir;
     private javax.swing.JButton jBtGravar;
     private javax.swing.JButton jBtNovo;
     private javax.swing.JButton jBtPesquisar;
+    private javax.swing.JComboBox jComboBoxStatus;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLbCapacidade;
     private javax.swing.JLabel jLbChassi;
     private javax.swing.JLabel jLbCor;
-    private javax.swing.JLabel jLbIdVeiculo;
     private javax.swing.JLabel jLbMarca;
     private javax.swing.JLabel jLbModelo;
     private javax.swing.JLabel jLbObs;
@@ -551,47 +617,62 @@ public class TelaVeiculo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFChassi;
     private javax.swing.JTextField jTFCor;
-    private javax.swing.JTextField jTFIdVeiculo;
     private javax.swing.JTextField jTFMarca;
     private javax.swing.JTextField jTFModelo;
     private javax.swing.JTextField jTFObs;
     private javax.swing.JTextField jTFPesquisar;
     private javax.swing.JTextField jTFPlaca;
     private javax.swing.JTextField jTFStatus;
+    private javax.swing.JTextField jTFTipo;
     private javax.swing.JTextField jTFcapacidade;
     private javax.swing.JTable jTabPesquisa;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
+    //mostra a pesquisa na tabela
     private void mostraPesquisa(List<Veiculo> veiculo) {
-        
-        while(tmVeiculo.getRowCount()>0){
+
+        while (tmVeiculo.getRowCount() > 0) {
             tmVeiculo.removeRow(0);
         }
-        if(veiculo.size() == 0){
+        if (veiculo.size() == 0) {
             JOptionPane.showMessageDialog(null, "Nenhum veículo cadastrado!");
-        }
-        else{
-            String[] linha = new String[]{null, null, null};
+        } else {
+            String[] linha = new String[]{null, null, null, null, null, null, null, null, null};
             for (int i = 0; i < veiculo.size(); i++) {
-                
+
                 tmVeiculo.addRow(linha);
-                tmVeiculo.setValueAt(veiculo.get(i).getIdVeiculo(), i, 0);
-                tmVeiculo.setValueAt(veiculo.get(i).getPlaca(), i, 1);
-                tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 2);
-                
+                //tmVeiculo.setValueAt(veiculo.get(i).getIdVeiculo(), i, 0);
+                tmVeiculo.setValueAt(veiculo.get(i).getPlaca(), i, 0);
+                tmVeiculo.setValueAt(veiculo.get(i).getCor(), i, 1);
+                tmVeiculo.setValueAt(veiculo.get(i).getChassi(), i, 2);
+                tmVeiculo.setValueAt(veiculo.get(i).getModelo(), i, 3);
+                tmVeiculo.setValueAt(veiculo.get(i).getMarca(), i, 4);
+                tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 5);
+                tmVeiculo.setValueAt(veiculo.get(i).getStatus(), i, 6);
+                tmVeiculo.setValueAt(veiculo.get(i).getTipo(), i, 7);
+                tmVeiculo.setValueAt(veiculo.get(i).getObservacao(), i, 8);
+
             }
         }
     }
 
+    //altera os dados selecionados na tabela
     private void alterar() throws SQLException {
-        if(jTabPesquisa.getSelectedRow() != -1){
-            if(verificaDados()){
+        if (jTabPesquisa.getSelectedRow() != -1) {
+            if (verificaDados()) {
                 Veiculo v1 = new Veiculo();
                 VeiculoDao dao = new VeiculoDao();
-                v1.setIdVeiculo(Integer.valueOf(jTFIdVeiculo.getText()));
+                //v1.setIdVeiculo(Integer.valueOf(jTFIdVeiculo.getText()));
                 v1.setPlaca(jTFPlaca.getText());
-                v1.setCapacidade(Integer.valueOf(jTFcapacidade.getText()));
+                v1.setCor(jTFCor.getText());
+                v1.setChassi(jTFChassi.getText());
+                v1.setModelo(jTFModelo.getText());
+                v1.setMarca(jTFMarca.getText());
+                v1.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
+                v1.setStatus(jTFStatus.getText());
+                v1.setTipo(jTFTipo.getText());
+                v1.setObservacao(jTFObs.getText());
                 dao.altera(v1);
                 JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
             }
