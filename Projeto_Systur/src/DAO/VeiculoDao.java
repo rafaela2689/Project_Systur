@@ -26,7 +26,7 @@ public class VeiculoDao {
     }
 
     public void adiciona(Veiculo veiculo) throws SQLException {
-        String sql = "insert into veiculo( placa,cor, chassi, modelo, marca, capacidade, status, tipo, observaçao)" + "values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into veiculo( placa,cor, chassi, modelo, marca, capacidade, status, tipo, observacao)" + "values(?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement st = conexao.prepareStatement(sql);
         //seta os valores
@@ -67,7 +67,7 @@ public class VeiculoDao {
             v1.setCapacidade(rs.getInt("capacidade"));
             v1.setStatus(rs.getString("status"));
             v1.setTipo(rs.getString("tipo"));
-            v1.setObservacao(rs.getString("observaçao"));
+            v1.setObservacao(rs.getString("observacao"));
 
             minhaLista.add(v1);
 
@@ -82,14 +82,15 @@ public class VeiculoDao {
         PreparedStatement st = conexao.prepareStatement(sql);
 
         //st.setString(1, v.getPlaca());
-        st.setString(1, v.getCor());
-        st.setString(2, v.getChassi());
-        st.setString(3, v.getModelo());
-        st.setString(4, v.getMarca());
-        st.setInt(5, v.getCapacidade());
-        st.setString(6, v.getStatus());
-        st.setString(7, v.getTipo());
-        st.setString(8, v.getObservacao());
+        st.setString(1, v.getPlaca());
+        st.setString(2, v.getCor());
+        st.setString(3, v.getChassi());
+        st.setString(4, v.getModelo());
+        st.setString(5, v.getMarca());
+        st.setInt(6, v.getCapacidade());
+        st.setString(7, v.getStatus());
+        st.setString(8, v.getTipo());
+        st.setString(9, v.getObservacao());
         //st.setInt(3, v.getIdVeiculo());
 
         //executa o código sql
@@ -101,6 +102,7 @@ public class VeiculoDao {
         String sql = "delete from veiculo where placa=?";
         PreparedStatement st = conexao.prepareStatement(sql);
 
+        st.setString(1, v.getPlaca());
         //st.setInt(1, v.getIdVeiculo());
         st.execute();
         st.close();

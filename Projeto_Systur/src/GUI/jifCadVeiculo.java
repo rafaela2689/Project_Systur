@@ -19,26 +19,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RAFAELA
  */
-public class TelaVeiculo extends javax.swing.JFrame {
-
-    //define o modelo da tabela, suas colunas
+public class jifCadVeiculo extends javax.swing.JInternalFrame {
+    
     DefaultTableModel tmVeiculo = new DefaultTableModel(null, new String[]{"Placa", "Cor", "Chassi",
                 "Modelo", "Marca", "Capacidade", "Status", "Tipo", "Observacao"});
     List<Veiculo> veiculo;
     ListSelectionModel lsmVeiculo;
 
     /**
-     * Creates new form TelaVeiculo
+     * Creates new form jifCadVeiculo
      */
-    public TelaVeiculo() {
+    public jifCadVeiculo() {
         initComponents();
-        desabilitaDados();
-        //listarVeiculos();
     }
-
-    //TelaVeiculo(JFTelaInicial aThis, boolean b) {
-        
-    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,8 +42,6 @@ public class TelaVeiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jBtGravar = new javax.swing.JButton();
@@ -81,12 +72,6 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabPesquisa = new javax.swing.JTable();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 0)));
 
@@ -228,11 +213,8 @@ public class TelaVeiculo extends javax.swing.JFrame {
                     .addComponent(jTFStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFObs, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTFChassi, jTFCor, jTFMarca, jTFModelo, jTFPlaca, jTFcapacidade});
-
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -292,7 +274,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,12 +289,11 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,38 +320,11 @@ public class TelaVeiculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTFcapacidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFcapacidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFcapacidadeActionPerformed
-
-    private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
-        try {
-            // TODO add your handling code here:
-            excluir();
-            mostraPesquisa(veiculo);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no botão excluir\n" + ex);
-        }
-
-    }//GEN-LAST:event_jBtExcluirActionPerformed
-
-    //exclui os dados que foram selecionados na tabela de pesquisa
-    public void excluir() throws SQLException {
-        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ",
-                "Confirmação", JOptionPane.YES_NO_OPTION);
-        if (resp == JOptionPane.YES_NO_OPTION) {
-            VeiculoDao dao = new VeiculoDao();
-            dao.exclui(veiculo.get(jTabPesquisa.getSelectedRow()));
-            mostraPesquisa(veiculo);
-        }
-
-    }
 
     private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
         // TODO add your handling code here:
@@ -380,7 +334,47 @@ public class TelaVeiculo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBtGravarActionPerformed
 
-    //realiza uma pesquisa
+    private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
+        try {
+            // TODO add your handling code here:
+            alterar();
+            listarVeiculos();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão alterar" + ex);
+        }
+    }//GEN-LAST:event_jBtAlterarActionPerformed
+
+    private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
+        try {
+            // TODO add your handling code here:
+            excluir();
+            mostraPesquisa(veiculo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão excluir\n" + ex);
+        }
+    }//GEN-LAST:event_jBtExcluirActionPerformed
+
+     public void excluir() throws SQLException {
+        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ",
+                "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (resp == JOptionPane.YES_NO_OPTION) {
+            VeiculoDao dao = new VeiculoDao();
+            dao.exclui(veiculo.get(jTabPesquisa.getSelectedRow()));
+            mostraPesquisa(veiculo);
+        }
+
+    }
+    
+    private void jBtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtPesquisarActionPerformed
+        try {
+            // TODO add your handling code here:
+            listarVeiculos();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão pesquisar" + ex);
+        }
+    }//GEN-LAST:event_jBtPesquisarActionPerformed
+
+     //realiza uma pesquisa
     public void listarVeiculos() throws SQLException {
         VeiculoDao dao = new VeiculoDao();
         veiculo = dao.getLista("%" + jTFPesquisar.getText() + "%");
@@ -410,17 +404,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
         }
     }
 
-    private void jBtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAlterarActionPerformed
-        try {
-            // TODO add your handling code here:
-            alterar();
-            listarVeiculos();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no botão alterar" + ex);
-        }
-
-    }//GEN-LAST:event_jBtAlterarActionPerformed
-
+    
     private void jBtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtNovoActionPerformed
         // TODO add your handling code here:
         habilitaDados();
@@ -436,14 +420,9 @@ public class TelaVeiculo extends javax.swing.JFrame {
         jTFObs.setText("");
     }//GEN-LAST:event_jBtNovoActionPerformed
 
-    private void jBtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtPesquisarActionPerformed
-        try {
-            // TODO add your handling code here:
-            listarVeiculos();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no botão pesquisar" + ex);
-        }
-    }//GEN-LAST:event_jBtPesquisarActionPerformed
+    private void jTFcapacidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFcapacidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFcapacidadeActionPerformed
 
     //desabilita a ediçao dos dados
     public void desabilitaDados() {
@@ -517,61 +496,7 @@ public class TelaVeiculo extends javax.swing.JFrame {
         }
     }
 
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
-
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new TelaVeiculo().setVisible(true);
-            }
-        });
-    }
-    /*
-     * private void gravarVeiculo() { veiculo.setIdVeiculo(new
-     * Integer(jTFIdVeiculo.getText())); veiculo.setPlaca(jTFPlaca.getText());
-     * veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
-     * daoV.inserir(veiculo); }
-     *
-     * private void alterarVeiculo() { veiculo.setIdVeiculo(new
-     * Integer(jTFIdVeiculo.getText())); veiculo.setPlaca(jTFPlaca.getText());
-     * veiculo.setCapacidade(new Integer(jTFcapacidade.getText()));
-     * daoV.alterar(veiculo); } private void excluirVeiculo() {
-     * veiculo.setIdVeiculo(new Integer(jTFIdVeiculo.getText()));
-     * daoV.excluir(veiculo);
-}
-     */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAlterar;
     private javax.swing.JButton jBtExcluir;
@@ -592,7 +517,6 @@ public class TelaVeiculo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFChassi;
     private javax.swing.JTextField jTFCor;
     private javax.swing.JTextField jTFMarca;
@@ -604,10 +528,9 @@ public class TelaVeiculo extends javax.swing.JFrame {
     private javax.swing.JTextField jTFTipo;
     private javax.swing.JTextField jTFcapacidade;
     private javax.swing.JTable jTabPesquisa;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
-    //mostra a pesquisa na tabela
+//mostra a pesquisa na tabela
     private void mostraPesquisa(List<Veiculo> veiculo) {
 
         while (tmVeiculo.getRowCount() > 0) {
@@ -656,4 +579,5 @@ public class TelaVeiculo extends javax.swing.JFrame {
             }
         }
     }
+    
 }

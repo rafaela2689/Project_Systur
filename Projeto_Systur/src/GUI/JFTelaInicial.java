@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author RAFAELA
@@ -15,6 +18,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
      */
     public JFTelaInicial() {
         initComponents();
+
     }
 
     /**
@@ -26,7 +30,8 @@ public class JFTelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jdPane = new javax.swing.JDesktopPane();
+        jmPrincipal = new javax.swing.JMenuBar();
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemClientes = new javax.swing.JMenuItem();
         jMenuItemServico = new javax.swing.JMenuItem();
@@ -57,33 +62,44 @@ public class JFTelaInicial extends javax.swing.JFrame {
                 jMenuItemVeiculoMouseClicked(evt);
             }
         });
+        jMenuItemVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemVeiculoActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemVeiculo);
 
-        jMenuBar1.add(jMenuCadastro);
+        jmPrincipal.add(jMenuCadastro);
 
         jMenuVenda.setText("Vendas");
-        jMenuBar1.add(jMenuVenda);
+        jmPrincipal.add(jMenuVenda);
 
         jMenuRelatorio.setText("Relatórios");
-        jMenuBar1.add(jMenuRelatorio);
+        jmPrincipal.add(jMenuRelatorio);
 
         jMenuAjuda.setText("Ajuda");
-        jMenuBar1.add(jMenuAjuda);
+        jmPrincipal.add(jMenuAjuda);
 
         jMenuSair.setText("Sair");
-        jMenuBar1.add(jMenuSair);
+        jmPrincipal.add(jMenuSair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jmPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jdPane, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jdPane, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -91,8 +107,15 @@ public class JFTelaInicial extends javax.swing.JFrame {
 
     private void jMenuItemVeiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemVeiculoMouseClicked
         // TODO add your handling code here:
-       new TelaVeiculo().setVisible(true);
+        //TelaVeiculo tv = new TelaVeiculo(this,true);  
+        //tv.setVisible(true);  
+
     }//GEN-LAST:event_jMenuItemVeiculoMouseClicked
+
+    private void jMenuItemVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVeiculoActionPerformed
+        // TODO add your handling code here:
+        criaJanelaCadVeiculo();
+    }//GEN-LAST:event_jMenuItemVeiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +160,6 @@ public class JFTelaInicial extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAjuda;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenuItem jMenuItemClientes;
     private javax.swing.JMenuItem jMenuItemFuncionario;
@@ -146,5 +168,20 @@ public class JFTelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenu jMenuVenda;
+    private javax.swing.JDesktopPane jdPane;
+    private javax.swing.JMenuBar jmPrincipal;
     // End of variables declaration//GEN-END:variables
+
+    jifCadVeiculo cadveiculo;
+    
+    private void criaJanelaCadVeiculo() {
+        if(cadveiculo==null){
+            cadveiculo = new jifCadVeiculo();
+        }
+        
+        jdPane.add(cadveiculo);
+        cadveiculo.setVisible(true);
+    }
+
+ 
 }
