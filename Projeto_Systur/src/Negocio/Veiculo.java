@@ -5,8 +5,11 @@ package Negocio;
  */
 public class Veiculo {
 
-private String placa;//chave primaria
+    private int idVeiculo;//chave primária
 
+   
+    
+    private String placa;
     private String cor;
     private String chassi;
     private String modelo;
@@ -15,6 +18,14 @@ private String placa;//chave primaria
     private String status;//será usado falso caso o veiculo nao esteja mais
     private String tipo;
     private String observacao;
+    
+     public int getIdVeiculo() {
+        return idVeiculo;
+    }
+
+    public void setIdVeiculo(int idVeiculo) {
+        this.idVeiculo = idVeiculo;
+    }
 
     public String getPlaca() {
         return placa;
