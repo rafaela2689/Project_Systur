@@ -6,12 +6,27 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDesktopPane;
 
 /**
  *
  * @author RAFAELA
  */
 public class JFTelaInicial extends javax.swing.JFrame {
+    
+    private static JFTelaInicial p;
+    
+    public static JFTelaInicial getInstancia(){
+    
+        if(p == null){
+            p = new JFTelaInicial();
+        }
+        return p;
+    }
+    
+    public static JDesktopPane getDPane(){
+        return getInstancia().jdPane;
+    }
 
     /**
      * Creates new form JFTelaInicial
@@ -114,7 +129,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
 
     private void jMenuItemVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVeiculoActionPerformed
         // TODO add your handling code here:
-        criaJanelaCadVeiculo();
+       criaJanelaCadVeiculo();
     }//GEN-LAST:event_jMenuItemVeiculoActionPerformed
 
     /**
@@ -154,7 +169,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new JFTelaInicial().setVisible(true);
+                getInstancia().setVisible(true);
             }
         });
     }
