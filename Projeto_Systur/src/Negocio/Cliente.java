@@ -12,38 +12,46 @@ package Negocio;
 public class Cliente {
     
     private String nome;
-    private int cpf;
+    private String CPF;
 
-    /**
-     * @return the nome
-     */
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+    private int passaporte;
+    private String email;
+
+    
+    public int getPassaporte() {
+        return passaporte;
+    }
+
+    public void setPassaporte(int passaporte) {
+        this.passaporte = passaporte;
+    }
+    
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * @return the CPF
+     * @return the nome
      */
-    public int getCpf() {
-        return cpf;
-    }
-
-    /**
-     * @param CPF the CPF to set
-     */
-    public void setCpf(int CPF) {
-        this.cpf = CPF;
-    }
-
-  
-    }
-    
-    
-
+}

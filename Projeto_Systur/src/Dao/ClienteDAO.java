@@ -37,32 +37,57 @@ public class ClienteDAO {
         
         //setando valores no statement
         
-        stmt.setInt(1,c1.getCpf());
+        stmt.setString(1,c1.getCPF());
         stmt.setString(2,c1.getNome());
+       
         //executa e fecha o codigo sql
         stmt.execute();
         stmt.close();
         
     }//fecha inserir
     
-   public List <Cliente> getLista() throws SQLException{
-       //coloca pra listar todos os clientes
-       String sql = "select * from Clientes";
-       PreparedStatement stmt = this.conexao.prepareStatement(sql);
-       //variavel que pega o resultado
-       ResultSet rs = stmt.executeQuery();
-       //lista para armazenar os elementos procurados
-       List<Cliente> ListaClientes = new ArrayList<Cliente>();
-       
-       while(rs.next()){
-           Cliente c1 = new Cliente();
-           c1.setNome(rs.getString("nome"));
-           c1.setCpf(rs.getInt("cpf"));
-           ListaClientes.add(c1);
-       }//fecha while
-       rs.close();
-       stmt.close();
-       return ListaClientes;
-   
-   }//fecha lista
+  public List<Cliente> getLista(String nome) throws SQLException {
+
+        String sql = "select *from veiculo where placa like?";
+        PreparedStatement st = this.conexao.prepareStatement(sql);
+        st.setString(1, nome);
+        ResultSet rs = st.executeQuery();
+
+        List<Cliente> ListaCliente = new ArrayList<Cliente>();
+
+        while (rs.next()) {
+            Cliente c1 = new Cliente();
+            //v1.setIdVeiculo(rs.getInt("IdVeiculo"));
+            c1.setCPF(rs.getString("CPF"));
+            c1.setNome(rs.getString("Nome"));
+
+            ListaCliente.add(c1);
+
+        }
+        rs.close();
+        st.close();
+        return ListaCliente;
+    }
+
+    public void altera(Cliente c1) throws SQLException {
+        String sql = "update veiculo set placa=?, capacidade=? where idVeiculo=?";
+        PreparedStatement st = conexao.prepareStatement(sql);
+
+        st.setString(1, c1.getCPF());
+        st.setString(2, c1.getNome());
+        //st.setInt(3, v.getIdVeiculo());
+
+        //executa o código sql
+        st.execute();
+        st.close();
+    }
+
+    public void exclui(Cliente c1) throws SQLException {
+        String sql = "delete from veiculo where idVeiculo=?";
+        PreparedStatement st = conexao.prepareStatement(sql);
+
+        //st.setInt(1, v.getIdVeiculo());
+        st.execute();
+        st.close();
+    }
 }

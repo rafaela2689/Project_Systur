@@ -4,13 +4,12 @@
  */
 package BancoDados;
 
-import ControladoresJPA.ClientesJpaController;
+
 import Dao.ClienteDAO;
-import EntidadeClientes.Clientes;
+
 import Negocio.Cliente;
 import java.sql.SQLException;
 import java.util.List;
-import org.hibernate.Session;
 
 /**
  *
@@ -38,7 +37,7 @@ public class Main {
         // ClienteDAO dao = new ClienteDAO();
         //List<Cliente> ListaCliente = dao.getLista();
 
-        Clientes c1 = new Clientes();
+      /*  Clientes c1 = new Clientes();
 
         c1.setNome("ediane");
         c1.setCpf(123333);
@@ -57,6 +56,6 @@ public class Main {
         //veiculo.setCapacidade(14);
 
 
-
+*/
     }//fecha main
 }

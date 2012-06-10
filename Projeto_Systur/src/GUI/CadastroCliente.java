@@ -1,3 +1,5 @@
+
+ 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -7,6 +9,9 @@ package GUI;
 import BancoDados.ConexaoCliente;
 import Dao.ClienteDAO;
 import Negocio.Cliente;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -404,10 +409,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTIDActionPerformed
 
-    private void jBProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProximoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBProximoActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -436,30 +437,52 @@ public class CadastroCliente extends javax.swing.JFrame {
 //cadastrando cliente
     private void jBtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGravarActionPerformed
         // instanciando objeto cliente e adicionando valores aos atributos
-      Cliente cliente = new Cliente();
-      
-      cliente.setNome(JTNome.getText());
-   
-      cliente.setCpf(Integer.parseInt(jTCPF.getText()));
-      
-      //validando dados
-      if((JTNome.getText().isEmpty())|| (jTCPF.getText().isEmpty())){
-          JOptionPane.showMessageDialog(null,"Os campos CPF e Nome Devem Ser preenchidos!");
-      }//fecha if
-      else {
-          //instanciando cliente na conexao 
-       //   ConexaoCliente con = new ConexaoCliente();
-      //ClienteDao dao = new ClienteDAO();
-        // dao.adiciona(c1);
-        JOptionPane.showMessageDialog(null, "Cliente" + JTNome.getText()+"Inserido com sucesso");
-      }//fecha else
+     
+      if (verificaDados()){
+            cadastro();
+            desabilitaDados();
+        }
+                                             
+      //fecha else
     }//GEN-LAST:event_jBtGravarActionPerformed
-
+  public void cadastro(){
+        try {
+        Cliente c1 = new Cliente();
+        
+        c1.setCPF(jTCPF.getText());
+        c1.setNome(JTNome.getText());
+        
+            ClienteDAO cd = new ClienteDAO();
+            cd.adiciona(c1);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+  //nao permite deixar campos em branco 
+  public boolean verificaDados(){
+        if(!jTCPF.getText().equals("")&&!JTNome.getText().equals("")){
+            return true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Campos obrigatórios em branco!");
+            return false;
+        }
+    }
+   public void desabilitaDados(){
+        jTCPF.setEditable(false);
+        JTNome.setEditable(false);
+       // jTFcapacidade.setEditable(false);
+    }
+    
     private void jBtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSairActionPerformed
         // TODO add your handling code here:
         
         System.exit(0);
     }//GEN-LAST:event_jBtSairActionPerformed
+
+    private void jBProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProximoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBProximoActionPerformed
 
     /**
      * @param args the command line arguments
