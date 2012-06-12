@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
@@ -23,9 +24,12 @@ import javax.swing.text.MaskFormatter;
  * @author Ediane
  */
 public class JifCadastroClientes extends javax.swing.JInternalFrame {
-     DefaultTableModel tbCadastroCliente= new DefaultTableModel(null, new String[]{"CPF" ,"Nome"});
+    
+    
+     DefaultTableModel tmCliente= new DefaultTableModel(null, new String[]{"CPF" ,"Nome"});
     List<Cliente> cliente;
-    ListSelectionModel lsmCadastroCLiente;
+    
+    ListSelectionModel lsmCLiente;
  MaskFormatter formatoCpf,formatoRg, formatoFone, formatoCel, FormatoCep, FormatoData;
     /**
      * Creates new form TCadastroCliente
@@ -163,6 +167,9 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
         jBPesquisar = new javax.swing.JButton();
         jTFPesquisar = new javax.swing.JTextField();
         jBtSair = new javax.swing.JButton();
+        jPTabelaCliente = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTabPesquisa = new javax.swing.JTable();
 
         setTitle("Cadastro Clientes");
 
@@ -197,10 +204,7 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
         jPEObservacoes.setLayout(jPEObservacoesLayout);
         jPEObservacoesLayout.setHorizontalGroup(
             jPEObservacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPEObservacoesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
         );
         jPEObservacoesLayout.setVerticalGroup(
             jPEObservacoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -663,7 +667,7 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
                             .addComponent(jPEBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPELogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPEDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBNovo)
                             .addComponent(jBExcluir)
@@ -720,26 +724,59 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
 
         jPPesquisaLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jBPesquisar, jBtSair});
 
+        jPTabelaCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Clientes"));
+
+        jTabPesquisa.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTabPesquisaAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane2.setViewportView(jTabPesquisa);
+
+        javax.swing.GroupLayout jPTabelaClienteLayout = new javax.swing.GroupLayout(jPTabelaCliente);
+        jPTabelaCliente.setLayout(jPTabelaClienteLayout);
+        jPTabelaClienteLayout.setHorizontalGroup(
+            jPTabelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPTabelaClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPTabelaClienteLayout.setVerticalGroup(
+            jPTabelaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPTabelaClienteLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 35, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPTabelaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPTabelaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -792,7 +829,7 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
             cadastro();
             desabilitaDados();
         }
-    }                                         
+                                             
 
      //realiza uma pesquisa
    // public void listarVeiculos() throws SQLException {
@@ -801,27 +838,9 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
        // mostraPesquisa(cliente);
    // }
 
-    //cadastra novo veiculo
-    public void cadastro() {
-        try {
-            Cliente c1 = new Cliente();
-
-            c1.setPrimeiroNome(jTFNome.getText());
-            c1.setCPF(jTFCPF.getText());
-           // v.setChassi(jTFChassi.getText());
-           // v.setModelo(jTFModelo.getText());
-           // v.setMarca(jTFMarca.getText());
-            //v.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
-            //v.setStatus(jTFStatus.getText());
-            //v.setTipo(jTFTipo.getText());
-            //v.setObservacao(jTFObs.getText());
-
-            ClienteDAO cd = new ClienteDAO();
-            cd.adiciona(c1);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage() );
+   
             //JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
-        }
+        
     }//GEN-LAST:event_jBtGravarActionPerformed
 
     private void jBNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoActionPerformed
@@ -829,7 +848,6 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
         jTFNome.setText("");
         jTFCPF.setText("");
         jTFBairro.setText("");
-       
         jTFCelular.setText("");
         jTFCep.setText("");
         jTFCidade.setText("");
@@ -844,6 +862,9 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
         jTPObservacoes.setText("");
         jTFPassaporte.setText("");
         jTFEstado.setText("");
+        //habilita para escrever nos tet fields 
+        habilitaDados();
+        
     }//GEN-LAST:event_jBNovoActionPerformed
 
     private void jBtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSairActionPerformed
@@ -854,26 +875,51 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
 
     private void jAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarActionPerformed
         // TODO add your handling code here:
+          try {
+            // TODO add your handling code here:
+            alterar();
+            listarCliente();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão alterar" + ex);
+        }
            
     }//GEN-LAST:event_jAlterarActionPerformed
 
 private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
  // TODO add your handling code here:
+     try {
+            // TODO add your handling code here:
+            excluir();
+            mostraPesquisa(cliente);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão excluir\n" + ex);
+        }
 
-  
-  }
-
-//mostra a pesquisa na tabela
-     private void mostraPesquisa(List<Veiculo> veiculo) {
-
-  
-        
+}
+     public void excluir() throws SQLException {
+        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ",
+                "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (resp == JOptionPane.YES_NO_OPTION) {
+            ClienteDAO dao = new ClienteDAO();
+            dao.exclui(cliente.get(jTabPesquisa.getSelectedRow()));
+            mostraPesquisa(cliente);
+        }      
     
 }//GEN-LAST:event_jBExcluirActionPerformed
 
 private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPesquisarActionPerformed
  // TODO add your handling code here:
+    try {
+            // TODO add your handling code here:
+            listarCliente();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no botão pesquisar" + ex);
+        }
 }//GEN-LAST:event_jTFPesquisarActionPerformed
+
+    private void jTabPesquisaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabPesquisaAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabPesquisaAncestorAdded
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAlterar;
@@ -901,11 +947,13 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JPanel jPPesquisa;
     private javax.swing.JPanel jPPrimeiroNome;
     private javax.swing.JPanel jPSobrenome1;
+    private javax.swing.JPanel jPTabelaCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRBFeminino;
     private javax.swing.JRadioButton jRBmasculino;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFBairro;
     private javax.swing.JTextField jTFCPF;
     private javax.swing.JTextField jTFCelular;
@@ -925,6 +973,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JTextField jTFSobrenome;
     private javax.swing.JTextField jTFTelefone;
     private javax.swing.JTextPane jTPObservacoes;
+    private javax.swing.JTable jTabPesquisa;
     // End of variables declaration//GEN-END:variables
 
 
@@ -948,6 +997,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         jTFEstado.setEditable(false);
         jTFDataCadastro.setEditable(false);
     }
+    //verifica se os campos obrigatorios estao em branco 
      public boolean verificaDados() {
         if ((!jTFCPF.getText().equals("")) && (!jTFNome.getText().equals(""))
                 && (!jTFRG.getText().equals("")) && (!jTFCelular.getText().equals("")) && (!jTFDataCadastro.getText().equals(""))
@@ -958,7 +1008,152 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             return false;
         }
     }
+       //realiza uma pesquisa
+    public void listarCliente() throws SQLException {
+        ClienteDAO dao = new ClienteDAO();
+        cliente = dao.getLista("%" + jTFPesquisar.getText() + "%");
+        mostraPesquisa(cliente);
+    }
 
-}           
+    //cadastra novo veiculo
+     //cadastra novo veiculo
+    public void cadastro() {
+        try {
+            Cliente c1 = new Cliente();
+            c1.setCPF(jTFCPF.getText());
+            c1.setPrimeiroNome(jTFNome.getText());
+           
+           // v.setChassi(jTFChassi.getText());
+           // v.setModelo(jTFModelo.getText());
+           // v.setMarca(jTFMarca.getText());
+            //v.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
+            //v.setStatus(jTFStatus.getText());
+            //v.setTipo(jTFTipo.getText());
+            //v.setObservacao(jTFObs.getText());
+
+            ClienteDAO cd = new ClienteDAO();
+            cd.adiciona(c1);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage() );
+            JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
+        }
+    }
+    
+    public void habilitaDados() {
+         jTFNome.setEditable(true);
+        jTFSobrenome.setEditable(true);
+        jTFEmail.setEditable(true);
+        jTFTelefone.setEditable(true);
+        jTFCelular.setEditable(true);
+        jTFProfissao.setEditable(true);
+        jTFDataNascimento.setEditable(true);
+        jTFCPF.setEditable(true);
+        jTFRG.setEditable(true);
+        jTFPassaporte.setEditable(true);
+        jTFCep.setEditable(true);
+        jTFLogradouro.setEditable(true);
+        jTFBairro.setEditable(true);
+        jTFNumero.setEditable(true);
+        jTFCidade.setEditable(true);
+        jTFEstado.setEditable(true);
+        jTFDataCadastro.setEditable(true);
+       
+    }
+
+      private void linhaSelecionada(JTable tabela) {
+        if (jTabPesquisa.getSelectedRow() != -1) {
+            habilitaDados();
+            jTFCPF.setText(String.valueOf(cliente.get(tabela.getSelectedRow()).getCPF()));
+            jTFNome.setText(cliente.get(tabela.getSelectedRow()).getPrimeiroNome());
+            //jTFCor.setText(veiculo.get(tabela.getSelectedRow()).getCor());
+            //jTFChassi.setText(veiculo.get(tabela.getSelectedRow()).getChassi());
+           // jTFModelo.setText(veiculo.get(tabela.getSelectedRow()).getModelo());
+           // jTFMarca.setText(veiculo.get(tabela.getSelectedRow()).getMarca());
+            //jTFcapacidade.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getCapacidade()));
+           // jTFStatus.setText(veiculo.get(tabela.getSelectedRow()).getStatus());
+           // jTFTipo.setText(veiculo.get(tabela.getSelectedRow()).getTipo());
+           // jTFObs.setText(veiculo.get(tabela.getSelectedRow()).getObservacao());
+        } else {
+
+          jTFNome.setText("");
+        jTFCPF.setText("");
+        jTFBairro.setText("");
+        jTFCelular.setText("");
+        jTFCep.setText("");
+        jTFCidade.setText("");
+        jTFDataCadastro.setText("");
+        jTFDataNascimento.setText("");
+        jTFEmail.setText("");
+        jTFRG.setText("");
+        jTFProfissao.setText("");
+        jTFLogradouro.setText("");
+        jTFTelefone.setText("");
+        jTFCelular.setText("");
+        jTPObservacoes.setText("");
+        jTFPassaporte.setText("");
+        jTFEstado.setText("");
+        
+        }
+  }
+        
+        //mostra a pesquisa na tabela
+    private void mostraPesquisa(List<Cliente> cliente) {
+
+        while (tmCliente.getRowCount() > 0) {
+            tmCliente.removeRow(0);
+        }
+        if (cliente.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Nenhum Cliente Cadastrado!");
+        } else {
+            String[] linha = new String[]{null, null};
+            for (int i = 0; i < cliente.size(); i++) {
+
+                tmCliente.addRow(linha);
+                tmCliente.setValueAt(cliente.get(i).getCPF(), i, 0);
+                tmCliente.setValueAt(cliente.get(i).getPrimeiroNome(), i, 1);
+                //tmVeiculo.setValueAt(veiculo.get(i).getCor(), i, 2);
+                //tmVeiculo.setValueAt(veiculo.get(i).getChassi(), i, 3);
+               // tmVeiculo.setValueAt(veiculo.get(i).getModelo(), i, 4);
+               // tmVeiculo.setValueAt(veiculo.get(i).getMarca(), i, 5);
+               // tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 6);
+               //1 tmVeiculo.setValueAt(veiculo.get(i).getStatus(), i, 7);
+               // tmVeiculo.setValueAt(veiculo.get(i).getTipo(), i, 8);
+               // tmVeiculo.setValueAt(veiculo.get(i).getObservacao(), i, 9);
+
+            }
+        }
+    }
+
+
+    //altera os dados selecionados na tabela
+    private void alterar() throws SQLException {
+        if (jTabPesquisa.getSelectedRow() != -1) {
+            if (verificaDados()) {
+                Cliente c1 = new Cliente();
+                ClienteDAO dao = new ClienteDAO();
+                
+               
+              c1.setPrimeiroNome(jTFNome.getText());
+              c1.setCPF(jTFCPF.getText());
+             //   v1.setCor(jTFCor.getText());
+              //  v1.setChassi(jTFChassi.getText());
+              //  v1.setModelo(jTFModelo.getText());
+              //  v1.setMarca(jTFMarca.getText());
+              //  v1.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
+              //  v1.setStatus(jTFStatus.getText());
+              //  v1.setTipo(jTFTipo.getText());
+              //  v1.setObservacao(jTFObs.getText());
+                dao.altera(c1);
+                JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
+            }
+        }
+    }
+        
+        
+    }
+
+   
+
+           
          
     

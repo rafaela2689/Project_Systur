@@ -5,7 +5,7 @@
 package BancoDados;
 
 
-import Dao.ClienteDAO;
+import DAO.ClienteDAO;
 
 import Negocio.Cliente;
 import java.sql.SQLException;

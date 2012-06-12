@@ -17,7 +17,9 @@ public class Conexao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Conectando ao banco!");
+
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/systur", "root", "ediane1011");
+
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
 
