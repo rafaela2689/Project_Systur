@@ -4,14 +4,10 @@
  */
 package GUI;
 
-import DAO.ClienteDAO;
-import DAO.VeiculoDao;
+import DAO.ClienteDao;
 import Negocio.Cliente;
-import Negocio.Veiculo;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -900,7 +896,7 @@ private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ",
                 "Confirmação", JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_NO_OPTION) {
-            ClienteDAO dao = new ClienteDAO();
+            ClienteDao dao = new ClienteDao();
             dao.exclui(cliente.get(jTabPesquisa.getSelectedRow()));
             mostraPesquisa(cliente);
         }      
@@ -1010,7 +1006,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }
        //realiza uma pesquisa
     public void listarCliente() throws SQLException {
-        ClienteDAO dao = new ClienteDAO();
+        ClienteDao dao = new ClienteDao();
         cliente = dao.getLista("%" + jTFPesquisar.getText() + "%");
         mostraPesquisa(cliente);
     }
@@ -1031,7 +1027,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             //v.setTipo(jTFTipo.getText());
             //v.setObservacao(jTFObs.getText());
 
-            ClienteDAO cd = new ClienteDAO();
+            ClienteDao cd = new ClienteDao();
             cd.adiciona(c1);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage() );
@@ -1130,7 +1126,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         if (jTabPesquisa.getSelectedRow() != -1) {
             if (verificaDados()) {
                 Cliente c1 = new Cliente();
-                ClienteDAO dao = new ClienteDAO();
+                ClienteDao dao = new ClienteDao();
                 
                
               c1.setPrimeiroNome(jTFNome.getText());
