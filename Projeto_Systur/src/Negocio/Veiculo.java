@@ -5,15 +5,27 @@ package Negocio;
  */
 public class Veiculo {
 
-private String placa;
+    private int idVeiculo;//chave primária
 
+   
+    
+    private String placa;
     private String cor;
     private String chassi;
     private String modelo;
     private String marca;
     private int capacidade;
-    private boolean status;//será usado falso caso o veiculo nao esteja mais 
+    private String status;//será usado falso caso o veiculo nao esteja mais
+    private String tipo;
     private String observacao;
+    
+     public int getIdVeiculo() {
+        return idVeiculo;
+    }
+
+    public void setIdVeiculo(int idVeiculo) {
+        this.idVeiculo = idVeiculo;
+    }
 
     public String getPlaca() {
         return placa;
@@ -40,7 +52,7 @@ private String placa;
     }
     //pohha nao vai funcionar nao?
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -72,12 +84,26 @@ private String placa;
         this.capacidade = capacidade;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     
