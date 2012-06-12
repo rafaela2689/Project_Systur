@@ -48,7 +48,7 @@ public class ClienteDAO {
     
   public List<Cliente> getLista(String nome) throws SQLException {
 
-        String sql = "select *from veiculo where placa like?";
+        String sql = "select *from Clientes where cpf like?";
         PreparedStatement st = this.conexao.prepareStatement(sql);
         st.setString(1, nome);
         ResultSet rs = st.executeQuery();
@@ -82,7 +82,7 @@ public class ClienteDAO {
     }
 
     public void exclui(Cliente c1) throws SQLException {
-        String sql = "delete from veiculo where idVeiculo=?";
+        String sql = "delete from Clientes where cpf =?";
         PreparedStatement st = conexao.prepareStatement(sql);
 
         //st.setInt(1, v.getIdVeiculo());
