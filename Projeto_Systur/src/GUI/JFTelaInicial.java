@@ -51,6 +51,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jMenuItemServico = new javax.swing.JMenuItem();
         jMenuItemFuncionario = new javax.swing.JMenuItem();
         jMenuItemVeiculo = new javax.swing.JMenuItem();
+        jMenuItemSair = new javax.swing.JMenuItem();
         jMenuVenda = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuAjuda = new javax.swing.JMenu();
@@ -75,6 +76,11 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jMenuCadastro.add(jMenuItemClientes);
 
         jMenuItemServico.setText("Serviços Turísticos");
+        jMenuItemServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemServicoActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuItemServico);
 
         jMenuItemFuncionario.setText("Funcionários");
@@ -93,6 +99,14 @@ public class JFTelaInicial extends javax.swing.JFrame {
         });
         jMenuCadastro.add(jMenuItemVeiculo);
 
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemSair);
+
         jmPrincipal.add(jMenuCadastro);
 
         jMenuVenda.setText("Vendas");
@@ -105,6 +119,11 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jmPrincipal.add(jMenuAjuda);
 
         jMenuSair.setText("Sair");
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuSairMouseClicked(evt);
+            }
+        });
         jmPrincipal.add(jMenuSair);
 
         setJMenuBar(jmPrincipal);
@@ -150,6 +169,21 @@ public class JFTelaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
         criaJanelaCadCliente ();
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuSairMouseClicked
+
+    private void jMenuItemServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemServicoActionPerformed
+        // TODO add your handling code here:
+        criaJanelaCadServico();
+    }//GEN-LAST:event_jMenuItemServicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,6 +231,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenuItem jMenuItemClientes;
     private javax.swing.JMenuItem jMenuItemFuncionario;
+    private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemServico;
     private javax.swing.JMenuItem jMenuItemVeiculo;
     private javax.swing.JMenu jMenuRelatorio;
@@ -209,6 +244,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
    //Criando metodo para chamar internal frame dos cadastros
     jifCadVeiculo cadveiculo;
     JifCadastroClientes cadCliente;
+    jifCadServico cadServico;
     
     private void criaJanelaCadVeiculo() {
         if(cadveiculo==null){
@@ -226,6 +262,15 @@ public class JFTelaInicial extends javax.swing.JFrame {
         
         jdPane.add(cadCliente);
         cadCliente.setVisible(true);
+    }
+  
+  private void criaJanelaCadServico (){ 
+          if(cadServico ==null){
+            cadServico = new jifCadServico();
+        }
+        
+        jdPane.add(cadServico);
+        cadServico.setVisible(true);
     }
     
     

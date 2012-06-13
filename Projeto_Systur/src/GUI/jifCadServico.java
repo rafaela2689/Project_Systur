@@ -4,8 +4,9 @@
  */
 package GUI;
 
+//import Dao.ServicoDao;
+//import Dao.VeiculoDao;
 import DAO.ServicoDao;
-import DAO.VeiculoDao;
 import Negocio.ServicoTuristico;
 import Negocio.Veiculo;
 import java.sql.SQLException;

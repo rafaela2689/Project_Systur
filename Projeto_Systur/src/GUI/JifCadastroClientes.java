@@ -4,6 +4,7 @@
  */
 package GUI;
 
+//import Dao.ClienteDao;
 import DAO.ClienteDao;
 import Negocio.Cliente;
 import java.sql.SQLException;
@@ -1030,7 +1031,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             ClienteDao cd = new ClienteDao();
             cd.adiciona(c1);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage() );
+            //JOptionPane.showMessageDialog(null,ex.getMessage() );
             JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
         }
     }
