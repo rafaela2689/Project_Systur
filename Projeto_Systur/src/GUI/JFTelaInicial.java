@@ -15,6 +15,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
     
     private static JFTelaInicial p;
     
+    //método padrão Singleton, garante que irá gerar uma única instância da tela inicial
     public static JFTelaInicial getInstancia(){
     
         if(p == null){
@@ -23,6 +24,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
         return p;
     }
     
+    //método que adiciona o jdesktopPane a instancia gerada da tela inicial
     public static JDesktopPane getDPane(){
         return getInstancia().jdPane;
     }
@@ -51,6 +53,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jMenuItemServico = new javax.swing.JMenuItem();
         jMenuItemFuncionario = new javax.swing.JMenuItem();
         jMenuItemVeiculo = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuVenda = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenu();
@@ -98,6 +101,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
             }
         });
         jMenuCadastro.add(jMenuItemVeiculo);
+        jMenuCadastro.add(jSeparator1);
 
         jMenuItemSair.setText("Sair");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +241,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuRelatorio;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenu jMenuVenda;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JDesktopPane jdPane;
     private javax.swing.JMenuBar jmPrincipal;
     // End of variables declaration//GEN-END:variables

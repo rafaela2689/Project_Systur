@@ -56,12 +56,12 @@ public class ServicoDao {
 
         while (rs.next()) {
             ServicoTuristico v1 = new ServicoTuristico();
-            v1.setIdServico(rs.getInt("idServiço"));
+            v1.setIdServico(rs.getInt("idServico"));
             v1.setValor(rs.getDouble("valor"));
             v1.setNome(rs.getString("nome"));
-            v1.setDescricao(rs.getString("descrição"));
-            v1.setLotMax(rs.getInt("lotação máxima"));
-            v1.setLotMin(rs.getInt("lotação mínima"));
+            v1.setDescricao(rs.getString("descricao"));
+            v1.setLotMax(rs.getInt("lotacaoMax"));
+            v1.setLotMin(rs.getInt("lotacaoMin"));
             v1.setObs(rs.getString("observacao"));
 
             minhaLista.add(v1);
