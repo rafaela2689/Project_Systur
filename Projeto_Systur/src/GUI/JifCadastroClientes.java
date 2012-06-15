@@ -21,13 +21,12 @@ import javax.swing.text.MaskFormatter;
  * @author Ediane
  */
 public class JifCadastroClientes extends javax.swing.JInternalFrame {
-    
-    
-     DefaultTableModel tmCliente= new DefaultTableModel(null, new String[]{"CPF" ,"Nome"});
+
+    DefaultTableModel tmCliente = new DefaultTableModel(null, new String[]{"CPF", "Nome"});
     List<Cliente> cliente;
-    
     ListSelectionModel lsmCLiente;
- MaskFormatter formatoCpf,formatoRg, formatoFone, formatoCel, FormatoCep, FormatoData;
+    MaskFormatter formatoCpf, formatoRg, formatoFone, formatoCel, FormatoCep, FormatoData;
+
     /**
      * Creates new form TCadastroCliente
      */
@@ -35,11 +34,10 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
         initComponents();
         desabilitaDados();
     }
+
     /**
      * Creates new form JifCadastroClientes
      */
-   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -790,7 +788,6 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
 
     private void jTFDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDataNascimentoActionPerformed
         // TODO add your handling code here:
-
    }//GEN-LAST:event_jTFDataNascimentoActionPerformed
 
     private void jTFLogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLogradouroActionPerformed
@@ -823,18 +820,18 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
             cadastro();
             desabilitaDados();
         }
-                                             
 
-     //realiza uma pesquisa
-   // public void listarVeiculos() throws SQLException {
-     //   ClienteDAO dao = new ClienteDAO();
-      //  cliente = dao.getLista("%" + jTFPesquisar.getText() + "%");
-       // mostraPesquisa(cliente);
-   // }
 
-   
-            //JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
-        
+        //realiza uma pesquisa
+        // public void listarVeiculos() throws SQLException {
+        //   ClienteDAO dao = new ClienteDAO();
+        //  cliente = dao.getLista("%" + jTFPesquisar.getText() + "%");
+        // mostraPesquisa(cliente);
+        // }
+
+
+        //JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
+
     }//GEN-LAST:event_jBtGravarActionPerformed
 
     private void jBNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoActionPerformed
@@ -858,7 +855,7 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
         jTFEstado.setText("");
         //habilita para escrever nos tet fields 
         habilitaDados();
-        
+
     }//GEN-LAST:event_jBNovoActionPerformed
 
     private void jBtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSairActionPerformed
@@ -869,19 +866,19 @@ public class JifCadastroClientes extends javax.swing.JInternalFrame {
 
     private void jAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarActionPerformed
         // TODO add your handling code here:
-          try {
+        try {
             // TODO add your handling code here:
             alterar();
             listarCliente();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no botão alterar" + ex);
         }
-           
+
     }//GEN-LAST:event_jAlterarActionPerformed
 
 private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
- // TODO add your handling code here:
-     try {
+        // TODO add your handling code here:
+        try {
             // TODO add your handling code here:
             excluir();
             mostraPesquisa(cliente);
@@ -889,32 +886,32 @@ private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             JOptionPane.showMessageDialog(null, "Erro no botão excluir\n" + ex);
         }
 
-}
-     public void excluir() throws SQLException {
+    }
+
+    public void excluir() throws SQLException {
         int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir os dados? ",
                 "Confirmação", JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_NO_OPTION) {
             ClienteDao dao = new ClienteDao();
             dao.exclui(cliente.get(jTabPesquisa.getSelectedRow()));
             mostraPesquisa(cliente);
-        }      
-    
+        }
+
 }//GEN-LAST:event_jBExcluirActionPerformed
 
 private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPesquisarActionPerformed
- // TODO add your handling code here:
+    // TODO add your handling code here:
     try {
-            // TODO add your handling code here:
-            listarCliente();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no botão pesquisar" + ex);
-        }
+        // TODO add your handling code here:
+        listarCliente();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro no botão pesquisar" + ex);
+    }
 }//GEN-LAST:event_jTFPesquisarActionPerformed
 
     private void jTabPesquisaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabPesquisaAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabPesquisaAncestorAdded
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAlterar;
     private javax.swing.JButton jBExcluir;
@@ -970,8 +967,7 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JTable jTabPesquisa;
     // End of variables declaration//GEN-END:variables
 
-
-     //desabilita a ediçao dos dados
+    //desabilita a ediçao dos dados
     public void desabilitaDados() {
         jTFNome.setEditable(false);
         jTFSobrenome.setEditable(false);
@@ -992,7 +988,8 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         jTFDataCadastro.setEditable(false);
     }
     //verifica se os campos obrigatorios estao em branco 
-     public boolean verificaDados() {
+
+    public boolean verificaDados() {
         if ((!jTFCPF.getText().equals("")) && (!jTFNome.getText().equals(""))
                 && (!jTFRG.getText().equals("")) && (!jTFCelular.getText().equals("")) && (!jTFDataCadastro.getText().equals(""))
                 && (!jTFDataNascimento.getText().equals(""))) {
@@ -1002,7 +999,8 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             return false;
         }
     }
-       //realiza uma pesquisa
+    //realiza uma pesquisa
+
     public void listarCliente() throws SQLException {
         ClienteDao dao = new ClienteDao();
         cliente = dao.getLista("%" + jTFPesquisar.getText() + "%");
@@ -1010,16 +1008,16 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }
 
     //cadastra novo veiculo
-     //cadastra novo veiculo
+    //cadastra novo veiculo
     public void cadastro() {
         try {
             Cliente c1 = new Cliente();
             c1.setCPF(jTFCPF.getText());
             c1.setPrimeiroNome(jTFNome.getText());
-           
-           // v.setChassi(jTFChassi.getText());
-           // v.setModelo(jTFModelo.getText());
-           // v.setMarca(jTFMarca.getText());
+
+            // v.setChassi(jTFChassi.getText());
+            // v.setModelo(jTFModelo.getText());
+            // v.setMarca(jTFMarca.getText());
             //v.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
             //v.setStatus(jTFStatus.getText());
             //v.setTipo(jTFTipo.getText());
@@ -1032,9 +1030,9 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
         }
     }
-    
+
     public void habilitaDados() {
-         jTFNome.setEditable(true);
+        jTFNome.setEditable(true);
         jTFSobrenome.setEditable(true);
         jTFEmail.setEditable(true);
         jTFTelefone.setEditable(true);
@@ -1051,46 +1049,46 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         jTFCidade.setEditable(true);
         jTFEstado.setEditable(true);
         jTFDataCadastro.setEditable(true);
-       
+
     }
 
-      private void linhaSelecionada(JTable tabela) {
+    private void linhaSelecionada(JTable tabela) {
         if (jTabPesquisa.getSelectedRow() != -1) {
             habilitaDados();
             jTFCPF.setText(String.valueOf(cliente.get(tabela.getSelectedRow()).getCPF()));
             jTFNome.setText(cliente.get(tabela.getSelectedRow()).getPrimeiroNome());
             //jTFCor.setText(veiculo.get(tabela.getSelectedRow()).getCor());
             //jTFChassi.setText(veiculo.get(tabela.getSelectedRow()).getChassi());
-           // jTFModelo.setText(veiculo.get(tabela.getSelectedRow()).getModelo());
-           // jTFMarca.setText(veiculo.get(tabela.getSelectedRow()).getMarca());
+            // jTFModelo.setText(veiculo.get(tabela.getSelectedRow()).getModelo());
+            // jTFMarca.setText(veiculo.get(tabela.getSelectedRow()).getMarca());
             //jTFcapacidade.setText(String.valueOf(veiculo.get(tabela.getSelectedRow()).getCapacidade()));
-           // jTFStatus.setText(veiculo.get(tabela.getSelectedRow()).getStatus());
-           // jTFTipo.setText(veiculo.get(tabela.getSelectedRow()).getTipo());
-           // jTFObs.setText(veiculo.get(tabela.getSelectedRow()).getObservacao());
+            // jTFStatus.setText(veiculo.get(tabela.getSelectedRow()).getStatus());
+            // jTFTipo.setText(veiculo.get(tabela.getSelectedRow()).getTipo());
+            // jTFObs.setText(veiculo.get(tabela.getSelectedRow()).getObservacao());
         } else {
 
-          jTFNome.setText("");
-        jTFCPF.setText("");
-        jTFBairro.setText("");
-        jTFCelular.setText("");
-        jTFCep.setText("");
-        jTFCidade.setText("");
-        jTFDataCadastro.setText("");
-        jTFDataNascimento.setText("");
-        jTFEmail.setText("");
-        jTFRG.setText("");
-        jTFProfissao.setText("");
-        jTFLogradouro.setText("");
-        jTFTelefone.setText("");
-        jTFCelular.setText("");
-        jTPObservacoes.setText("");
-        jTFPassaporte.setText("");
-        jTFEstado.setText("");
-        
+            jTFNome.setText("");
+            jTFCPF.setText("");
+            jTFBairro.setText("");
+            jTFCelular.setText("");
+            jTFCep.setText("");
+            jTFCidade.setText("");
+            jTFDataCadastro.setText("");
+            jTFDataNascimento.setText("");
+            jTFEmail.setText("");
+            jTFRG.setText("");
+            jTFProfissao.setText("");
+            jTFLogradouro.setText("");
+            jTFTelefone.setText("");
+            jTFCelular.setText("");
+            jTPObservacoes.setText("");
+            jTFPassaporte.setText("");
+            jTFEstado.setText("");
+
         }
-  }
-        
-        //mostra a pesquisa na tabela
+    }
+
+    //mostra a pesquisa na tabela
     private void mostraPesquisa(List<Cliente> cliente) {
 
         while (tmCliente.getRowCount() > 0) {
@@ -1107,17 +1105,16 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 tmCliente.setValueAt(cliente.get(i).getPrimeiroNome(), i, 1);
                 //tmVeiculo.setValueAt(veiculo.get(i).getCor(), i, 2);
                 //tmVeiculo.setValueAt(veiculo.get(i).getChassi(), i, 3);
-               // tmVeiculo.setValueAt(veiculo.get(i).getModelo(), i, 4);
-               // tmVeiculo.setValueAt(veiculo.get(i).getMarca(), i, 5);
-               // tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 6);
-               //1 tmVeiculo.setValueAt(veiculo.get(i).getStatus(), i, 7);
-               // tmVeiculo.setValueAt(veiculo.get(i).getTipo(), i, 8);
-               // tmVeiculo.setValueAt(veiculo.get(i).getObservacao(), i, 9);
+                // tmVeiculo.setValueAt(veiculo.get(i).getModelo(), i, 4);
+                // tmVeiculo.setValueAt(veiculo.get(i).getMarca(), i, 5);
+                // tmVeiculo.setValueAt(veiculo.get(i).getCapacidade(), i, 6);
+                //1 tmVeiculo.setValueAt(veiculo.get(i).getStatus(), i, 7);
+                // tmVeiculo.setValueAt(veiculo.get(i).getTipo(), i, 8);
+                // tmVeiculo.setValueAt(veiculo.get(i).getObservacao(), i, 9);
 
             }
         }
     }
-
 
     //altera os dados selecionados na tabela
     private void alterar() throws SQLException {
@@ -1125,29 +1122,21 @@ private void jTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             if (verificaDados()) {
                 Cliente c1 = new Cliente();
                 ClienteDao dao = new ClienteDao();
-                
-               
-              c1.setPrimeiroNome(jTFNome.getText());
-              c1.setCPF(jTFCPF.getText());
-             //   v1.setCor(jTFCor.getText());
-              //  v1.setChassi(jTFChassi.getText());
-              //  v1.setModelo(jTFModelo.getText());
-              //  v1.setMarca(jTFMarca.getText());
-              //  v1.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
-              //  v1.setStatus(jTFStatus.getText());
-              //  v1.setTipo(jTFTipo.getText());
-              //  v1.setObservacao(jTFObs.getText());
+
+
+                c1.setPrimeiroNome(jTFNome.getText());
+                c1.setCPF(jTFCPF.getText());
+                //   v1.setCor(jTFCor.getText());
+                //  v1.setChassi(jTFChassi.getText());
+                //  v1.setModelo(jTFModelo.getText());
+                //  v1.setMarca(jTFMarca.getText());
+                //  v1.setCapacidade(Integer.parseInt(jTFcapacidade.getText()));
+                //  v1.setStatus(jTFStatus.getText());
+                //  v1.setTipo(jTFTipo.getText());
+                //  v1.setObservacao(jTFObs.getText());
                 dao.altera(c1);
                 JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
             }
         }
     }
-        
-        
-    }
-
-   
-
-           
-         
-    
+}
