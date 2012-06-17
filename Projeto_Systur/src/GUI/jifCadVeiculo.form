@@ -107,6 +107,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jBtPesquisar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\procurar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
               <Events>
@@ -118,7 +121,7 @@
             <Component class="javax.swing.JButton" name="jBtSair">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\cancelar.png"/>
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\sair.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
@@ -158,28 +161,24 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jTFIdVeiculo" linkSize="1" min="-2" pref="171" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLbStatus" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTFcapacidade" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                                   <Component id="jTFMarca" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTFChassi" linkSize="1" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <EmptySpace pref="75" max="32767" attributes="0"/>
-                                      <Component id="jLbObs" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jTFChassi" linkSize="1" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="jTFModelo" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTFIdVeiculo" linkSize="1" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
                                           <Component id="jTFCor" linkSize="1" min="-2" pref="179" max="-2" attributes="0"/>
                                           <Component id="jTFPlaca" linkSize="1" min="-2" pref="179" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLbStatus" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLbObs" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Component id="jTFModelo" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -193,22 +192,16 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTFObs" linkSize="1" alignment="1" min="-2" pref="195" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTFStatus" linkSize="1" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                          <Component id="jTFTipo" linkSize="1" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="jBtNovo" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="jBtNovo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jTFObs" linkSize="1" alignment="1" min="-2" pref="195" max="-2" attributes="0"/>
+                          <Component id="jTFTipo" linkSize="1" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jTFStatus" min="-2" pref="96" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -221,36 +214,31 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTFStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTFTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLbObs" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTFObs" min="-2" pref="96" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlbIdVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTFIdVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTFPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLbPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jLbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTFStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTFPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLbCor" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                                   <Component id="jTFCor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLbObs" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -267,14 +255,18 @@
                                   <Component id="jLbMarca" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTFMarca" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLbCapacidade" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFcapacidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTFObs" min="-2" pref="96" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLbCapacidade" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFcapacidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="64" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jBtNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -345,8 +337,6 @@
                 <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xe3;o:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFStatus">
-            </Component>
             <Component class="javax.swing.JTextField" name="jTFObs">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
@@ -358,6 +348,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jBtGravar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\ok.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gravar"/>
               </Properties>
               <Events>
@@ -366,6 +359,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jBtAlterar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\edit.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alterar"/>
               </Properties>
               <Events>
@@ -374,6 +370,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jBtExcluir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\cancelar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
               <Events>
@@ -382,6 +381,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jBtNovo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\editcopy.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Novo"/>
               </Properties>
               <Events>
@@ -394,6 +396,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFIdVeiculo">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTFStatus">
             </Component>
           </SubComponents>
         </Container>
@@ -414,7 +418,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="614" max="-2" attributes="0"/>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

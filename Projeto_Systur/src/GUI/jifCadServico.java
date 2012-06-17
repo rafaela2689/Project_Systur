@@ -129,6 +129,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
 
         jlbObs.setText("Observação:");
 
+        jbtGravar.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\ok.png")); // NOI18N
         jbtGravar.setText("Gravar");
         jbtGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +137,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
             }
         });
 
+        jbtAlterar.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\edit.png")); // NOI18N
         jbtAlterar.setText("Alterar");
         jbtAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +145,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
             }
         });
 
+        jbtExcluir.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\cancelar.png")); // NOI18N
         jbtExcluir.setText("Excluir");
         jbtExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +153,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
             }
         });
 
+        jbtNovo.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\editcopy.png")); // NOI18N
         jbtNovo.setText("Novo");
         jbtNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,19 +187,19 @@ public class jifCadServico extends javax.swing.JInternalFrame {
                         .addGap(72, 72, 72)
                         .addGroup(jPanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelCadastroLayout.createSequentialGroup()
+                                .addComponent(jlbLotMax)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtfLotMax, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadastroLayout.createSequentialGroup()
                                 .addGroup(jPanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlbLotMin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jlbObs))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfLotMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfObs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelCadastroLayout.createSequentialGroup()
-                                .addGroup(jPanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jbtNovo)
-                                    .addComponent(jlbLotMax))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfLotMax, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtfLotMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfObs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanelCadastroLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jbtGravar)
@@ -294,10 +298,10 @@ public class jifCadServico extends javax.swing.JInternalFrame {
                 .addComponent(jPanelCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jButtonSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\cancelar.png")); // NOI18N
+        jButtonSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\sair.png")); // NOI18N
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSairActionPerformed(evt);
@@ -386,7 +390,6 @@ public class jifCadServico extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSair;
     private javax.swing.JPanel jPanelCadastro;
@@ -438,6 +441,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
 
             ServicoDao vd = new ServicoDao();
             vd.adiciona(v);
+            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
             //JOptionPane.showMessageDialog(null, "Erro no botão cadastrar\n" + ex);
@@ -528,6 +532,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
             for (int i = 0; i < servico.size(); i++) {
 
                 tmServico.addRow(linha);
+                
                 tmServico.setValueAt(servico.get(i).getIdServico(), i, 0);
                 tmServico.setValueAt(servico.get(i).getValor(), i, 1);
                 tmServico.setValueAt(servico.get(i).getNome(), i, 2);
@@ -546,11 +551,13 @@ public class jifCadServico extends javax.swing.JInternalFrame {
             if (verificaDados()) {
                 ServicoTuristico v1 = new ServicoTuristico();
                 ServicoDao dao = new ServicoDao();
+                
                 v1.setIdServico(Integer.valueOf(jtfIdServico.getText()));
-                v1.setValor(Double.valueOf(jtfValor.getText()));
+                v1.setValor(Double.parseDouble(jtfValor.getText()));
                 v1.setNome(jtfNome.getText());
                 v1.setDescricao(jtfDescricao.getText());
                 v1.setLotMax(Integer.parseInt(jtfLotMax.getText()));
+                v1.setLotMin(Integer.parseInt(jtfLotMin.getText()));
                 v1.setObs(jtfObs.getText());
                 dao.altera(v1);
                 JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");

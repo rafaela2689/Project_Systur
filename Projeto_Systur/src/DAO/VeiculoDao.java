@@ -82,15 +82,16 @@ public class VeiculoDao {
         PreparedStatement st = conexao.prepareStatement(sql);
 
         //st.setString(1, v.getPlaca());
-        st.setString(1, v.getPlaca());
-        st.setString(2, v.getCor());
-        st.setString(3, v.getChassi());
-        st.setString(4, v.getModelo());
-        st.setString(5, v.getMarca());
-        st.setInt(6, v.getCapacidade());
-        st.setString(7, v.getStatus());
-        st.setString(8, v.getTipo());
-        st.setString(9, v.getObservacao());
+        st.setInt(1, v.getIdVeiculo());
+        st.setString(2, v.getPlaca());
+        st.setString(3, v.getCor());
+        st.setString(4, v.getChassi());
+        st.setString(5, v.getModelo());
+        st.setString(6, v.getMarca());
+        st.setInt(7, v.getCapacidade());
+        st.setString(8, v.getStatus());
+        st.setString(9, v.getTipo());
+        st.setString(10, v.getObservacao());
         //st.setInt(3, v.getIdVeiculo());
 
         //executa o código sql

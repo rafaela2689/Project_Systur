@@ -114,6 +114,16 @@ public class JFTelaInicial extends javax.swing.JFrame {
         jmPrincipal.add(jMenuCadastro);
 
         jMenuVenda.setText("Vendas");
+        jMenuVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuVendaMouseClicked(evt);
+            }
+        });
+        jMenuVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendaActionPerformed(evt);
+            }
+        });
         jmPrincipal.add(jMenuVenda);
 
         jMenuRelatorio.setText("Relatórios");
@@ -189,6 +199,16 @@ public class JFTelaInicial extends javax.swing.JFrame {
         criaJanelaCadServico();
     }//GEN-LAST:event_jMenuItemServicoActionPerformed
 
+    private void jMenuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendaActionPerformed
+        // TODO add your handling code here:
+        criaJanelaVenda();
+    }//GEN-LAST:event_jMenuVendaActionPerformed
+
+    private void jMenuVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuVendaMouseClicked
+        // TODO add your handling code here:
+        criaJanelaVenda();
+    }//GEN-LAST:event_jMenuVendaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -250,6 +270,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
     jifCadVeiculo cadveiculo;
     JifCadastroClientes cadCliente;
     jifCadServico cadServico;
+    jifVenda venda;
     
     private void criaJanelaCadVeiculo() {
         if(cadveiculo==null){
@@ -276,6 +297,15 @@ public class JFTelaInicial extends javax.swing.JFrame {
         
         jdPane.add(cadServico);
         cadServico.setVisible(true);
+    }
+  
+  private void criaJanelaVenda (){ 
+          if(venda ==null){
+            venda = new jifVenda();
+        }
+        
+        jdPane.add(venda);
+        venda.setVisible(true);
     }
     
     

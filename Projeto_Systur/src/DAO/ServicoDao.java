@@ -56,6 +56,7 @@ public class ServicoDao {
 
         while (rs.next()) {
             ServicoTuristico v1 = new ServicoTuristico();
+            
             v1.setIdServico(rs.getInt("idServico"));
             v1.setValor(rs.getDouble("valor"));
             v1.setNome(rs.getString("nome"));
@@ -77,7 +78,7 @@ public class ServicoDao {
         PreparedStatement st = conexao.prepareStatement(sql);
 
         //st.setString(1, v.getPlaca());
-        //st.setInt(1, servico.getIdServico());
+        st.setInt(1, s.getIdServico());
         st.setDouble(2, s.getValor());
         st.setString(3, s.getNome());
         st.setString(4, s.getDescricao());

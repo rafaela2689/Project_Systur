@@ -65,7 +65,7 @@
                   <Component id="jPanelCadastro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanelPesquisa" min="-2" pref="178" max="-2" attributes="0"/>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -167,23 +167,23 @@
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jlbLotMax" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jtfLotMax" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jlbLotMin" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
                                           <Component id="jlbObs" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jtfLotMin" linkSize="1" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
-                                          <Component id="jtfObs" linkSize="1" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jbtNovo" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jlbLotMax" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jtfLotMin" linkSize="1" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                                              <Component id="jtfObs" linkSize="1" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jtfLotMax" linkSize="1" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -293,6 +293,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbtGravar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\ok.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gravar"/>
               </Properties>
               <Events>
@@ -301,6 +304,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbtAlterar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\edit.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alterar"/>
               </Properties>
               <Events>
@@ -309,6 +315,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbtExcluir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\cancelar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
               <Events>
@@ -317,6 +326,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbtNovo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\editcopy.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Novo"/>
               </Properties>
               <Events>
@@ -380,7 +392,7 @@
     <Component class="javax.swing.JButton" name="jButtonSair">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\cancelar.png"/>
+          <Image iconType="2" name="C:\Users\RAFAELA\Downloads\MiniCurso\imgs\sair.png"/>
         </Property>
       </Properties>
       <Events>
