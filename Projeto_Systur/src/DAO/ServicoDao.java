@@ -45,9 +45,30 @@ public class ServicoDao {
         st.close();
     }
 
-    public List<ServicoTuristico> getLista(String nome) throws SQLException {
+   
 
-        String sql = "select *from servico where idservico like?";
+    public void altera(ServicoTuristico s) throws SQLException {
+        String sql = "update servico set valor=?, nome=?, descricao=?, lotacaoMax=?, lotacaoMin=?, observacao=? where idservico=?";
+        PreparedStatement st = conexao.prepareStatement(sql);
+
+        //st.setString(1, v.getPlaca());
+        st.setInt(1, s.getIdServico());
+        st.setDouble(2, s.getValor());
+        st.setString(3, s.getNome());
+        st.setString(4, s.getDescricao());
+        st.setInt(5, s.getLotMax());
+        st.setInt(6, s.getLotMin());
+        st.setString(7, s.getObs());
+        //st.setInt(3, v.getIdVeiculo());
+
+        //executa o código sql
+        st.execute();
+        st.close();
+    }
+    
+     public List<ServicoTuristico> getLista(String nome) throws SQLException {
+
+        String sql = "select *from servico where nome like?";
         PreparedStatement st = this.conexao.prepareStatement(sql);
         st.setString(1, nome);
         ResultSet rs = st.executeQuery();
@@ -71,25 +92,6 @@ public class ServicoDao {
         rs.close();
         st.close();
         return minhaLista;
-    }
-
-    public void altera(ServicoTuristico s) throws SQLException {
-        String sql = "update servico set valor=?, nome=?, descricao=?, lotacaoMax=?, lotacaoMin=?, observacao=? where idservico=?";
-        PreparedStatement st = conexao.prepareStatement(sql);
-
-        //st.setString(1, v.getPlaca());
-        st.setInt(1, s.getIdServico());
-        st.setDouble(2, s.getValor());
-        st.setString(3, s.getNome());
-        st.setString(4, s.getDescricao());
-        st.setInt(5, s.getLotMax());
-        st.setInt(6, s.getLotMin());
-        st.setString(7, s.getObs());
-        //st.setInt(3, v.getIdVeiculo());
-
-        //executa o código sql
-        st.execute();
-        st.close();
     }
 
     public void exclui(ServicoTuristico s) throws SQLException {

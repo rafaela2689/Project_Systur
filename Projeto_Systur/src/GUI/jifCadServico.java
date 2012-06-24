@@ -6,10 +6,12 @@ package GUI;
 
 //import Dao.ServicoDao;
 //import Dao.VeiculoDao;
+import Controller.ServicoController;
 import DAO.ServicoDao;
 import Negocio.ServicoTuristico;
-import Negocio.Veiculo;
+//import Negocio.Veiculo;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -298,7 +300,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
                 .addComponent(jPanelCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jButtonSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\RAFAELA\\Downloads\\MiniCurso\\imgs\\sair.png")); // NOI18N
@@ -328,6 +330,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jtfPesquisaServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesquisaServicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfPesquisaServicoActionPerformed
@@ -344,6 +347,8 @@ public class jifCadServico extends javax.swing.JInternalFrame {
 
     private void jbtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGravarActionPerformed
         // TODO add your handling code here:
+        
+        //onClickSalvar();
         if (verificaDados()) {
             cadastro();
             desabilitaDados();
@@ -419,8 +424,24 @@ public class jifCadServico extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfPesquisaServico;
     private javax.swing.JTextField jtfValor;
     // End of variables declaration//GEN-END:variables
+    
+    
+    /*private void onClickSalvar() throws ParseException {
+        ServicoController sc = new ServicoController();
+        try {
+            sc.salvar(Integer.parseInt(jtfIdServico.getText()), Double.parseDouble(jtfValor.getText()), jtfNome.getText(),jtfDescricao.getText(),
+                    Integer.parseInt(jtfLotMax.getText()),Integer.parseInt(jtfLotMin.getText()), jtfObs.getText());
+            JOptionPane.showMessageDialog(this, "Contato salvo com sucesso!");
+            //clearFields();
+            //contatoList = new ContatoController().listaContatos();        
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Nao foi possivel salvar contato!\n" + e.getLocalizedMessage());
+        } 
+    }
+    * 
+    */
+    
     //realiza uma pesquisa
-
     public void listarServicos() throws SQLException {
         ServicoDao dao = new ServicoDao();
         servico = dao.getLista("%" + jtfPesquisaServico.getText() + "%");
@@ -525,7 +546,7 @@ public class jifCadServico extends javax.swing.JInternalFrame {
         while (tmServico.getRowCount() > 0) {
             tmServico.removeRow(0);
         }
-        if (servico.size() == 0) {
+        if (servico.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum veículo cadastrado!");
         } else {
             String[] linha = new String[]{null, null, null, null, null, null, null};

@@ -271,6 +271,7 @@ public class JFTelaInicial extends javax.swing.JFrame {
     JifCadastroClientes cadCliente;
     jifCadServico cadServico;
     jifVenda venda;
+    jifServico servico;
     
     private void criaJanelaCadVeiculo() {
         if(cadveiculo==null){
@@ -291,12 +292,12 @@ public class JFTelaInicial extends javax.swing.JFrame {
     }
   
   private void criaJanelaCadServico (){ 
-          if(cadServico ==null){
-            cadServico = new jifCadServico();
+          if(servico == null){
+            servico = new jifServico();
         }
         
-        jdPane.add(cadServico);
-        cadServico.setVisible(true);
+        jdPane.add(servico);
+        servico.setVisible(true);
     }
   
   private void criaJanelaVenda (){ 
